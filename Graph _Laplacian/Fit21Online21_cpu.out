@@ -1,0 +1,220 @@
+/home/tk9623/JM_to_FI/UST10_master_cont1.4.2_long_grlap.py:141: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_pc = X_with_pc.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_master_cont1.4.2_long_grlap.py:172: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_ns = X_with_ns.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_master_cont1.4.2_long_grlap.py:376: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  bi_aligned = bi_aligned.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_master_cont1.4.2_long_grlap.py:518: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+Daily returns stored in `data.ret_ser`:
+--------------------------------------------------
+date
+1982-01-11   -0.015971
+1982-01-12    0.010590
+1982-01-13   -0.010331
+1982-01-14    0.006727
+1982-01-15   -0.004911
+                ...   
+2025-03-24   -0.006368
+2025-03-26   -0.000698
+2025-03-27   -0.001434
+2025-03-28    0.008694
+2025-03-31    0.003802
+Name: UST10, Length: 11272, dtype: float64
+--------------------------------------------------
+Features stored in `data.X`:
+--------------------------------------------------
+               ret_5  DD-log_5  sortino_5  ...    ret_60  DD-log_60  sortino_60
+date                                       ...                                 
+1982-01-11 -0.003413 -4.817972  -0.422206  ...  0.000045  -5.117899    0.007515
+1982-01-12 -0.001600 -4.887287  -0.212159  ...  0.000166  -5.123688    0.027946
+1982-01-13 -0.002730 -4.833562  -0.343076  ...  0.000046  -5.112249    0.007565
+1982-01-14 -0.001506 -4.902876  -0.202823  ...  0.000122  -5.118037    0.020454
+1982-01-15 -0.001947 -4.940675  -0.272293  ...  0.000065  -5.119924    0.010797
+...              ...       ...        ...  ...       ...        ...         ...
+2025-03-24 -0.000293 -5.867173  -0.103587  ...  0.000157  -5.872110    0.055646
+2025-03-26 -0.000346 -5.931987  -0.130275  ...  0.000147  -5.877529    0.052444
+2025-03-27 -0.000487 -5.980048  -0.192394  ...  0.000129  -5.881786    0.046160
+2025-03-28  0.000702 -6.049362   0.297522  ...  0.000227  -5.887562    0.081898
+2025-03-31  0.001103 -6.118677   0.501149  ...  0.000268  -5.893339    0.097260
+
+[11272 rows x 9 columns]
+[base] train: 1982-01-11 00:00:00〜1994-12-30 00:00:00 | validation 1995-01-02 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[NS] train: 1982-01-11 00:00:00〜1994-12-30 00:00:00 | validation 1995-01-02 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[PCA] train: 1982-01-11 00:00:00〜1994-12-30 00:00:00 | validation 1995-01-02 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+Using device: cuda
+Prediction period: 2014-01-01 00:00:00 to 2014-06-30 00:00:00
+Best jump penalty: 100.0, Best Score: 0.027
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.42      0.21      0.28        38
+       crash       0.72      0.88      0.79        90
+
+    accuracy                           0.68       128
+   macro avg       0.57      0.54      0.54       128
+weighted avg       0.63      0.68      0.64       128
+
+Prediction period: 2014-07-01 00:00:00 to 2014-12-31 00:00:00
+Best jump penalty: 51.7947467923121, Best Score: 0.016
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.30      0.56      0.39        36
+       crash       0.75      0.52      0.61        95
+
+    accuracy                           0.53       131
+   macro avg       0.53      0.54      0.50       131
+weighted avg       0.63      0.53      0.55       131
+
+Prediction period: 2015-01-01 00:00:00 to 2015-06-30 00:00:00
+Best jump penalty: 100.0, Best Score: 0.033
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.51      1.00      0.67        46
+       crash       1.00      0.45      0.62        82
+
+    accuracy                           0.65       128
+   macro avg       0.75      0.73      0.65       128
+weighted avg       0.82      0.65      0.64       128
+
+Prediction period: 2015-07-01 00:00:00 to 2015-12-31 00:00:00
+Best jump penalty: 1.0, Best Score: 0.037
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.61      0.65      0.63        55
+       crash       0.74      0.70      0.72        76
+
+    accuracy                           0.68       131
+   macro avg       0.67      0.68      0.67       131
+weighted avg       0.68      0.68      0.68       131
+
+Prediction period: 2016-01-01 00:00:00 to 2016-06-30 00:00:00
+Best jump penalty: 3.72759372031494, Best Score: 0.017
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.63      0.58      0.60        66
+       crash       0.59      0.65      0.62        63
+
+    accuracy                           0.61       129
+   macro avg       0.61      0.61      0.61       129
+weighted avg       0.61      0.61      0.61       129
+
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0      -0.024742    0.047681 -0.518914  ... -0.011026 -0.252665          -2.029469
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.079268    0.064417  1.230542  ... -0.011641  1.204345            0.89524
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.047218    0.031609  1.493844  ... -0.005831  1.688645                NaN
+
+[1 rows x 8 columns]
+[Full loop] 2016-01-01～2016-06-30 total 719.9s
+Traceback (most recent call last):
+  File "/home/tk9623/JM_to_FI/UST10_master_cont1.4.2_long_grlap.py", line 613, in <module>
+    plt.tight_layout()
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/pyplot.py", line 2833, in tight_layout
+    gcf().tight_layout(pad=pad, h_pad=h_pad, w_pad=w_pad, rect=rect)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/figure.py", line 3640, in tight_layout
+    engine.execute(self)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/layout_engine.py", line 183, in execute
+    kwargs = get_tight_layout_figure(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/_tight_layout.py", line 266, in get_tight_layout_figure
+    kwargs = _auto_adjust_subplotpars(fig, renderer,
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/_tight_layout.py", line 82, in _auto_adjust_subplotpars
+    bb += [martist._get_tightbbox_for_layout_only(ax, renderer)]
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/artist.py", line 1402, in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/axes/_base.py", line 4548, in get_tightbbox
+    ba = martist._get_tightbbox_for_layout_only(axis, renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/artist.py", line 1402, in _get_tightbbox_for_layout_only
+    return obj.get_tightbbox(*args, **{**kwargs, "for_layout_only": True})
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/axis.py", line 1353, in get_tightbbox
+    self._update_label_position(renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/axis.py", line 2448, in _update_label_position
+    bboxes, bboxes2 = self._get_tick_boxes_siblings(renderer=renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/axis.py", line 2241, in _get_tick_boxes_siblings
+    tlb, tlb2 = axis._get_ticklabel_bboxes(ticks_to_draw, renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/axis.py", line 1332, in _get_ticklabel_bboxes
+    return ([tick.label1.get_window_extent(renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/axis.py", line 1332, in <listcomp>
+    return ([tick.label1.get_window_extent(renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/text.py", line 969, in get_window_extent
+    bbox, info, descent = self._get_layout(self._renderer)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/text.py", line 373, in _get_layout
+    _, lp_h, lp_d = _get_text_metrics_with_cache(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/text.py", line 69, in _get_text_metrics_with_cache
+    return _get_text_metrics_with_cache_impl(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/text.py", line 77, in _get_text_metrics_with_cache_impl
+    return renderer_ref().get_text_width_height_descent(text, fontprop, ismath)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/backends/backend_agg.py", line 211, in get_text_width_height_descent
+    return super().get_text_width_height_descent(s, prop, ismath)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/backend_bases.py", line 566, in get_text_width_height_descent
+    return self.get_texmanager().get_text_width_height_descent(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/texmanager.py", line 363, in get_text_width_height_descent
+    dvifile = cls.make_dvi(tex, fontsize)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/texmanager.py", line 295, in make_dvi
+    cls._run_checked_subprocess(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/matplotlib/texmanager.py", line 258, in _run_checked_subprocess
+    raise RuntimeError(
+RuntimeError: latex was not able to process the following string:
+b'lp'
+
+Here is the full command invocation and its output:
+
+latex -interaction=nonstopmode --halt-on-error --output-directory=tmprb6xgg1f 9f38ea23c6eea1ee36f527b07a085607f5442aab04ae442fa69a12eda1a3460c.tex
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=latex)
+ restricted \write18 enabled.
+entering extended mode
+(./9f38ea23c6eea1ee36f527b07a085607f5442aab04ae442fa69a12eda1a3460c.tex
+LaTeX2e <2020-10-01> patch level 4
+L3 programming layer <2021-02-18>
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2020/04/10 v1.4m Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo))
+
+! LaTeX Error: File `type1cm.sty' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: sty)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.8 \usepackage
+               {type1ec}^^M
+No pages of output.
+Transcript written on tmprb6xgg1f/9f38ea23c6eea1ee36f527b07a085607f5442aab04ae4
+42fa69a12eda1a3460c.log.
+
+
+

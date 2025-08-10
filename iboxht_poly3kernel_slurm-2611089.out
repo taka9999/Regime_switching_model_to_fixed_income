@@ -1,0 +1,1106 @@
+/home/tk9623/JM_to_FI/UST_iboxhy_mix_cont1.4.5.py:169: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_pc = X_with_pc.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST_iboxhy_mix_cont1.4.5.py:199: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_ns = X_with_ns.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST_iboxhy_mix_cont1.4.5.py:411: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  bi_aligned = bi_aligned.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST_iboxhy_mix_cont1.4.5.py:474: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  sw_aligned = sw_aligned.fillna(method="bfill")
+Daily returns stored in `data.ret_ser`:
+--------------------------------------------------
+date
+1999-01-04   -0.003544
+1999-01-05   -0.004303
+1999-01-06   -0.001564
+1999-01-07   -0.003651
+1999-01-08   -0.004605
+                ...   
+2025-03-24   -0.009680
+2025-03-26    0.002787
+2025-03-27    0.000166
+2025-03-28    0.011837
+2025-03-31    0.003231
+Name: diffret of UST10 and iBoxhy, Length: 6675, dtype: float64
+--------------------------------------------------
+Features stored in `data.X`:
+--------------------------------------------------
+               ret_5  DD-log_5  sortino_5  ...    ret_60  DD-log_60  sortino_60
+date                                       ...                                 
+1999-01-04 -0.003544 -5.642384  -1.000000  ... -0.003544  -5.642384   -1.000000
+1999-01-05 -0.003950 -5.529493  -0.995444  ... -0.003926  -5.535524   -0.995366
+1999-01-06 -0.003042 -5.723346  -0.930627  ... -0.003129  -5.702703   -0.937778
+1999-01-07 -0.003227 -5.687068  -0.952100  ... -0.003262  -5.678259   -0.953925
+1999-01-08 -0.003584 -5.588089  -0.957679  ... -0.003537  -5.601279   -0.957653
+...              ...       ...        ...  ...       ...        ...         ...
+2025-03-24 -0.000829 -5.492842  -0.201473  ... -0.000153  -5.881658   -0.054833
+2025-03-26 -0.000361 -5.562157  -0.094042  ... -0.000119  -5.887434   -0.042977
+2025-03-27 -0.000293 -5.631472  -0.081742  ... -0.000116  -5.893210   -0.042038
+2025-03-28  0.001277 -5.700787   0.382031  ...  0.000021  -5.898986    0.007783
+2025-03-31  0.001530 -5.770101   0.490507  ...  0.000058  -5.904763    0.021347
+
+[6675 rows x 9 columns]
+[base] train: 1999-01-04 00:00:00〜2009-12-31 00:00:00 | validation 2010-01-04 00:00:00 ~ 2014-12-31 00:00:00 |test: 2015-01-02 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[NS] train: 1999-01-04 00:00:00〜2009-12-31 00:00:00 | validation 2010-01-04 00:00:00 ~ 2014-12-31 00:00:00 |test: 2015-01-02 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[PCA] train: 1999-01-04 00:00:00〜2009-12-31 00:00:00 | validation 2010-01-04 00:00:00 ~ 2014-12-31 00:00:00 |test: 2015-01-02 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+/home/tk9623/JM_to_FI/UST_iboxhy_mix_cont1.4.5.py:627: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+/home/tk9623/JM_to_FI/UST_iboxhy_mix_cont1.4.5.py:744: FutureWarning: DataFrame.applymap has been deprecated. Use DataFrame.map instead.
+  perf_df = perf_df.applymap(lambda cell: cell.item() if isinstance(cell, pd.Series) and cell.size == 1 else cell)
+Prediction period: 2010-01-01 00:00:00 to 2010-06-30 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 0.2, Best Score: 0.026
+Feature importances:
+ DD-log_60            0.542726
+slope_diff_ewm       0.137140
+DD-log_20            0.132917
+ret_60               0.031437
+sortino_60           0.025171
+y2_diff_ewm          0.022639
+DD-log_5             0.020060
+ret_20               0.014507
+spvol_diff_ewma      0.012781
+sortino_20           0.010313
+sortino_5            0.009275
+vix_logdiff_ewm      0.007625
+ret_5                0.007429
+move_logdiff_ewma    0.006177
+corr_diff_ewma       0.005991
+bi5_diff_ewma        0.005394
+y10_diff_ewm         0.003610
+vol_diff_ewma        0.002337
+bi_slope_ewma        0.001435
+bi10_diff_ewma       0.001035
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        41
+       crash       0.67      1.00      0.80        84
+
+    accuracy                           0.67       125
+   macro avg       0.34      0.50      0.40       125
+weighted avg       0.45      0.67      0.54       125
+
+Prediction period: 2010-07-01 00:00:00 to 2010-12-31 00:00:00
+Best jump penalty: 56.23413251903491, Best reg_alpha: 4.081071705534972, Best Score: 0.027
+Feature importances:
+ DD-log_20            0.646271
+DD-log_60            0.180965
+ret_60               0.062809
+slope_diff_ewm       0.033155
+sortino_60           0.015436
+y10_diff_ewm         0.010043
+ret_20               0.008179
+DD-log_5             0.006848
+ret_5                0.006785
+y2_diff_ewm          0.005713
+spvol_diff_ewma      0.003955
+bi5_diff_ewma        0.003643
+move_logdiff_ewma    0.003506
+sortino_20           0.003321
+bi_slope_ewma        0.002560
+vix_logdiff_ewm      0.002125
+corr_diff_ewma       0.001990
+bi10_diff_ewma       0.001981
+vol_diff_ewma        0.000715
+sortino_5            0.000000
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        53
+       crash       0.58      1.00      0.73        72
+
+    accuracy                           0.58       125
+   macro avg       0.29      0.50      0.37       125
+weighted avg       0.33      0.58      0.42       125
+
+Prediction period: 2011-01-01 00:00:00 to 2011-06-30 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 0.44145488738336014, Best Score: 0.022
+Feature importances:
+ DD-log_20            0.295908
+DD-log_60            0.214714
+sortino_5            0.162218
+sortino_20           0.157644
+sortino_60           0.031810
+DD-log_5             0.023173
+ret_20               0.016091
+slope_diff_ewm       0.015395
+ret_5                0.015190
+vix_logdiff_ewm      0.012871
+ret_60               0.012369
+bi_slope_ewma        0.007872
+bi5_diff_ewma        0.006198
+bi10_diff_ewma       0.004559
+y10_diff_ewm         0.004436
+move_logdiff_ewma    0.004392
+corr_diff_ewma       0.004130
+vol_diff_ewma        0.003963
+spvol_diff_ewma      0.003628
+y2_diff_ewm          0.003437
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.87      0.93        53
+       crash       0.91      1.00      0.95        71
+
+    accuracy                           0.94       124
+   macro avg       0.96      0.93      0.94       124
+weighted avg       0.95      0.94      0.94       124
+
+Prediction period: 2011-07-01 00:00:00 to 2011-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.069
+Feature importances:
+ DD-log_20            0.487177
+sortino_20           0.214805
+DD-log_60            0.045923
+sortino_5            0.043376
+DD-log_5             0.038779
+ret_20               0.033201
+ret_60               0.027479
+slope_diff_ewm       0.016637
+ret_5                0.015351
+y2_diff_ewm          0.010877
+move_logdiff_ewma    0.008948
+sortino_60           0.008452
+bi5_diff_ewma        0.007803
+corr_diff_ewma       0.007786
+vix_logdiff_ewm      0.007326
+bi10_diff_ewma       0.006728
+spvol_diff_ewma      0.006302
+vol_diff_ewma        0.005007
+bi_slope_ewma        0.004554
+y10_diff_ewm         0.003489
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.79      0.91      0.84        54
+       crash       0.92      0.81      0.86        70
+
+    accuracy                           0.85       124
+   macro avg       0.85      0.86      0.85       124
+weighted avg       0.86      0.85      0.86       124
+
+Prediction period: 2012-01-01 00:00:00 to 2012-06-30 00:00:00
+Best jump penalty: 56.23413251903491, Best reg_alpha: 0.44145488738336014, Best Score: 0.085
+Feature importances:
+ DD-log_60            0.380895
+sortino_5            0.196830
+sortino_20           0.119057
+DD-log_20            0.115678
+DD-log_5             0.029484
+ret_20               0.026206
+ret_5                0.024939
+ret_60               0.024073
+sortino_60           0.010496
+vol_diff_ewma        0.009892
+vix_logdiff_ewm      0.009353
+slope_diff_ewm       0.009276
+move_logdiff_ewma    0.006581
+bi10_diff_ewma       0.006095
+y10_diff_ewm         0.005959
+bi_slope_ewma        0.005879
+y2_diff_ewm          0.005775
+bi5_diff_ewma        0.005650
+spvol_diff_ewma      0.004173
+corr_diff_ewma       0.003711
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.56      0.72        61
+       crash       0.71      1.00      0.83        67
+
+    accuracy                           0.79       128
+   macro avg       0.86      0.78      0.77       128
+weighted avg       0.85      0.79      0.78       128
+
+Prediction period: 2012-07-01 00:00:00 to 2012-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.064
+Feature importances:
+ DD-log_20            0.421932
+sortino_20           0.225106
+DD-log_60            0.113806
+sortino_5            0.041115
+ret_20               0.034747
+DD-log_5             0.027520
+ret_60               0.023358
+ret_5                0.020469
+vix_logdiff_ewm      0.012966
+y2_diff_ewm          0.009817
+sortino_60           0.009112
+vol_diff_ewma        0.008202
+slope_diff_ewm       0.008067
+y10_diff_ewm         0.007512
+spvol_diff_ewma      0.006641
+bi10_diff_ewma       0.006589
+bi5_diff_ewma        0.006380
+move_logdiff_ewma    0.005805
+corr_diff_ewma       0.005720
+bi_slope_ewma        0.005136
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.72      0.48      0.58        71
+       crash       0.55      0.78      0.64        58
+
+    accuracy                           0.61       129
+   macro avg       0.64      0.63      0.61       129
+weighted avg       0.64      0.61      0.61       129
+
+Prediction period: 2013-01-01 00:00:00 to 2013-06-30 00:00:00
+Best jump penalty: 56.23413251903491, Best reg_alpha: 0.2, Best Score: 0.038
+Feature importances:
+ DD-log_20            0.388098
+sortino_20           0.301845
+sortino_5            0.058286
+ret_5                0.044682
+DD-log_60            0.038679
+ret_20               0.033243
+DD-log_5             0.024934
+vix_logdiff_ewm      0.016285
+ret_60               0.015079
+sortino_60           0.010335
+bi5_diff_ewma        0.008890
+slope_diff_ewm       0.008426
+move_logdiff_ewma    0.008095
+bi10_diff_ewma       0.007275
+corr_diff_ewma       0.006569
+vol_diff_ewma        0.006248
+spvol_diff_ewma      0.006096
+y10_diff_ewm         0.006083
+y2_diff_ewm          0.005935
+bi_slope_ewma        0.004916
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.61      0.95      0.74        57
+       crash       0.92      0.51      0.65        69
+
+    accuracy                           0.71       126
+   macro avg       0.77      0.73      0.70       126
+weighted avg       0.78      0.71      0.70       126
+
+Prediction period: 2013-07-01 00:00:00 to 2013-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.055
+Feature importances:
+ DD-log_20            0.414488
+sortino_20           0.231313
+DD-log_60            0.056472
+ret_60               0.055489
+sortino_5            0.041193
+DD-log_5             0.034324
+ret_5                0.032289
+ret_20               0.020498
+vix_logdiff_ewm      0.015239
+y10_diff_ewm         0.013354
+bi10_diff_ewma       0.012078
+y2_diff_ewm          0.011629
+sortino_60           0.010434
+spvol_diff_ewma      0.008026
+slope_diff_ewm       0.007962
+vol_diff_ewma        0.007896
+move_logdiff_ewma    0.007255
+bi5_diff_ewma        0.007143
+bi_slope_ewma        0.007019
+corr_diff_ewma       0.005899
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.03      0.03      0.03        66
+       crash       0.03      0.03      0.03        64
+
+    accuracy                           0.03       130
+   macro avg       0.03      0.03      0.03       130
+weighted avg       0.03      0.03      0.03       130
+
+Prediction period: 2014-01-01 00:00:00 to 2014-06-30 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 4.081071705534972, Best Score: 0.058
+Feature importances:
+ DD-log_20            0.529138
+sortino_20           0.184828
+sortino_5            0.043230
+DD-log_5             0.041457
+ret_20               0.031160
+ret_5                0.026184
+ret_60               0.023584
+sortino_60           0.023517
+DD-log_60            0.023179
+vix_logdiff_ewm      0.018990
+slope_diff_ewm       0.012210
+y2_diff_ewm          0.007846
+vol_diff_ewma        0.005368
+move_logdiff_ewma    0.005213
+bi10_diff_ewma       0.004410
+bi5_diff_ewma        0.004258
+y10_diff_ewm         0.004076
+spvol_diff_ewma      0.003974
+corr_diff_ewma       0.003723
+bi_slope_ewma        0.003655
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.34      1.00      0.51        43
+       crash       0.00      0.00      0.00        83
+
+    accuracy                           0.34       126
+   macro avg       0.17      0.50      0.25       126
+weighted avg       0.12      0.34      0.17       126
+
+Prediction period: 2014-07-01 00:00:00 to 2014-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.44145488738336014, Best Score: 0.005
+Feature importances:
+ DD-log_20            0.657940
+sortino_5            0.071619
+sortino_20           0.055889
+ret_5                0.045401
+DD-log_60            0.044471
+DD-log_5             0.020061
+vix_logdiff_ewm      0.013638
+bi_slope_ewma        0.008490
+slope_diff_ewm       0.008223
+ret_20               0.008219
+y2_diff_ewm          0.007939
+ret_60               0.007618
+spvol_diff_ewma      0.007225
+sortino_60           0.007193
+move_logdiff_ewma    0.007192
+corr_diff_ewma       0.006372
+bi10_diff_ewma       0.006218
+y10_diff_ewm         0.006165
+bi5_diff_ewma        0.005945
+vol_diff_ewma        0.004183
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.86      1.00      0.92        98
+       crash       1.00      0.50      0.67        32
+
+    accuracy                           0.88       130
+   macro avg       0.93      0.75      0.80       130
+weighted avg       0.89      0.88      0.86       130
+
+Prediction period: 2015-01-01 00:00:00 to 2015-06-30 00:00:00
+Best jump penalty: 56.23413251903491, Best reg_alpha: 0.2, Best Score: 0.077
+Feature importances:
+ DD-log_20            0.801022
+DD-log_5             0.036881
+DD-log_60            0.030384
+slope_diff_ewm       0.018383
+vix_logdiff_ewm      0.010225
+sortino_5            0.010130
+ret_20               0.009399
+spvol_diff_ewma      0.008723
+sortino_60           0.008605
+y2_diff_ewm          0.008064
+ret_5                0.007855
+move_logdiff_ewma    0.006572
+y10_diff_ewm         0.006446
+bi_slope_ewma        0.005953
+vol_diff_ewma        0.005877
+bi5_diff_ewma        0.005432
+corr_diff_ewma       0.005404
+sortino_20           0.005044
+ret_60               0.005026
+bi10_diff_ewma       0.004573
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        38
+       crash       0.70      1.00      0.82        88
+
+    accuracy                           0.70       126
+   macro avg       0.35      0.50      0.41       126
+weighted avg       0.49      0.70      0.57       126
+
+Prediction period: 2015-07-01 00:00:00 to 2015-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.100
+Feature importances:
+ DD-log_20            0.814497
+DD-log_5             0.027108
+DD-log_60            0.023387
+ret_5                0.013762
+slope_diff_ewm       0.012084
+ret_60               0.011889
+bi10_diff_ewma       0.011698
+sortino_5            0.011215
+vix_logdiff_ewm      0.009401
+sortino_60           0.009242
+bi5_diff_ewma        0.008612
+spvol_diff_ewma      0.007616
+y2_diff_ewm          0.007524
+ret_20               0.007253
+vol_diff_ewma        0.004924
+bi_slope_ewma        0.004765
+move_logdiff_ewma    0.004466
+sortino_20           0.003761
+y10_diff_ewm         0.003747
+corr_diff_ewma       0.003048
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.71      0.08      0.15        60
+       crash       0.55      0.97      0.70        70
+
+    accuracy                           0.56       130
+   macro avg       0.63      0.53      0.43       130
+weighted avg       0.63      0.56      0.45       130
+
+Prediction period: 2016-01-01 00:00:00 to 2016-06-30 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.053
+Feature importances:
+ DD-log_20            0.787870
+DD-log_60            0.037650
+ret_60               0.030789
+ret_20               0.024170
+DD-log_5             0.023213
+ret_5                0.010372
+spvol_diff_ewma      0.009556
+vol_diff_ewma        0.009113
+corr_diff_ewma       0.007937
+bi5_diff_ewma        0.007769
+y2_diff_ewm          0.007196
+bi_slope_ewma        0.007152
+bi10_diff_ewma       0.005924
+sortino_20           0.005599
+slope_diff_ewm       0.005377
+vix_logdiff_ewm      0.005103
+sortino_5            0.005072
+move_logdiff_ewma    0.004403
+y10_diff_ewm         0.003021
+sortino_60           0.002713
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        40
+       crash       0.69      1.00      0.81        87
+
+    accuracy                           0.69       127
+   macro avg       0.34      0.50      0.41       127
+weighted avg       0.47      0.69      0.56       127
+
+Prediction period: 2016-07-01 00:00:00 to 2016-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.047
+Feature importances:
+ DD-log_20            0.569107
+sortino_5            0.158847
+ret_5                0.035488
+DD-log_60            0.028958
+DD-log_5             0.026021
+sortino_20           0.022290
+ret_20               0.017416
+y2_diff_ewm          0.015241
+slope_diff_ewm       0.012287
+vol_diff_ewma        0.011968
+ret_60               0.011389
+bi_slope_ewma        0.011259
+move_logdiff_ewma    0.011168
+vix_logdiff_ewm      0.010559
+corr_diff_ewma       0.010246
+bi10_diff_ewma       0.010204
+y10_diff_ewm         0.010151
+bi5_diff_ewma        0.009566
+spvol_diff_ewma      0.009149
+sortino_60           0.008685
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.86      0.09      0.16        67
+       crash       0.50      0.98      0.66        62
+
+    accuracy                           0.52       129
+   macro avg       0.68      0.54      0.41       129
+weighted avg       0.69      0.52      0.40       129
+
+Prediction period: 2017-01-01 00:00:00 to 2017-06-30 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.44145488738336014, Best Score: 0.101
+Feature importances:
+ DD-log_20            0.235404
+sortino_20           0.212389
+sortino_5            0.123311
+DD-log_5             0.109871
+ret_60               0.075033
+ret_20               0.050929
+DD-log_60            0.033413
+ret_5                0.032804
+slope_diff_ewm       0.014981
+y2_diff_ewm          0.013335
+vix_logdiff_ewm      0.013270
+sortino_60           0.011439
+bi10_diff_ewma       0.011001
+bi5_diff_ewma        0.010639
+y10_diff_ewm         0.010274
+vol_diff_ewma        0.009978
+corr_diff_ewma       0.009322
+spvol_diff_ewma      0.008653
+move_logdiff_ewma    0.007771
+bi_slope_ewma        0.006185
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.63      0.77        78
+       crash       0.63      1.00      0.78        50
+
+    accuracy                           0.77       128
+   macro avg       0.82      0.81      0.77       128
+weighted avg       0.86      0.77      0.77       128
+
+Prediction period: 2017-07-01 00:00:00 to 2017-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.44145488738336014, Best Score: 0.070
+Feature importances:
+ ret_20               0.442549
+DD-log_20            0.139168
+sortino_20           0.117192
+sortino_5            0.070220
+ret_5                0.035642
+DD-log_60            0.028786
+DD-log_5             0.028379
+ret_60               0.019166
+vix_logdiff_ewm      0.013580
+slope_diff_ewm       0.012879
+y2_diff_ewm          0.012798
+bi5_diff_ewma        0.011682
+sortino_60           0.010135
+corr_diff_ewma       0.008805
+bi10_diff_ewma       0.008764
+vol_diff_ewma        0.008600
+move_logdiff_ewma    0.008250
+y10_diff_ewm         0.008228
+spvol_diff_ewma      0.007962
+bi_slope_ewma        0.007216
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.51      1.00      0.68        61
+       crash       1.00      0.13      0.24        67
+
+    accuracy                           0.55       128
+   macro avg       0.76      0.57      0.46       128
+weighted avg       0.77      0.55      0.45       128
+
+Prediction period: 2018-01-01 00:00:00 to 2018-06-30 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.2, Best Score: 0.102
+Feature importances:
+ ret_20               0.530954
+ret_60               0.196280
+sortino_60           0.077017
+DD-log_20            0.023018
+sortino_20           0.021491
+sortino_5            0.019787
+ret_5                0.018131
+DD-log_5             0.016016
+DD-log_60            0.011423
+y2_diff_ewm          0.010402
+bi5_diff_ewma        0.009934
+vix_logdiff_ewm      0.009845
+vol_diff_ewma        0.008815
+y10_diff_ewm         0.008581
+corr_diff_ewma       0.008040
+bi_slope_ewma        0.007207
+slope_diff_ewm       0.006819
+spvol_diff_ewma      0.006531
+bi10_diff_ewma       0.005398
+move_logdiff_ewma    0.004311
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        39
+       crash       0.69      1.00      0.82        88
+
+    accuracy                           0.69       127
+   macro avg       0.35      0.50      0.41       127
+weighted avg       0.48      0.69      0.57       127
+
+Prediction period: 2018-07-01 00:00:00 to 2018-12-31 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 0.44145488738336014, Best Score: 0.082
+Feature importances:
+ ret_60               0.712989
+ret_20               0.084091
+sortino_60           0.057596
+DD-log_60            0.016624
+sortino_20           0.015830
+spvol_diff_ewma      0.014314
+ret_5                0.013613
+slope_diff_ewm       0.010302
+DD-log_20            0.009692
+DD-log_5             0.009358
+bi10_diff_ewma       0.007658
+sortino_5            0.007540
+vix_logdiff_ewm      0.007363
+y10_diff_ewm         0.007294
+move_logdiff_ewma    0.005783
+bi_slope_ewma        0.005586
+vol_diff_ewma        0.004986
+y2_diff_ewm          0.004314
+bi5_diff_ewma        0.003137
+corr_diff_ewma       0.001930
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.79      0.88        33
+       crash       0.93      1.00      0.96        96
+
+    accuracy                           0.95       129
+   macro avg       0.97      0.89      0.92       129
+weighted avg       0.95      0.95      0.94       129
+
+Prediction period: 2019-01-01 00:00:00 to 2019-06-30 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 4.081071705534972, Best Score: 0.074
+Feature importances:
+ DD-log_20            0.660951
+sortino_5            0.098092
+DD-log_5             0.054248
+ret_5                0.033465
+sortino_20           0.026485
+DD-log_60            0.022724
+vix_logdiff_ewm      0.015236
+y2_diff_ewm          0.010898
+slope_diff_ewm       0.009188
+ret_20               0.009023
+move_logdiff_ewma    0.007685
+bi10_diff_ewma       0.007684
+sortino_60           0.007476
+spvol_diff_ewma      0.007002
+bi_slope_ewma        0.006981
+bi5_diff_ewma        0.006591
+ret_60               0.004410
+y10_diff_ewm         0.004320
+vol_diff_ewma        0.003828
+corr_diff_ewma       0.003713
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.61      1.00      0.76        53
+       crash       1.00      0.53      0.70        73
+
+    accuracy                           0.73       126
+   macro avg       0.80      0.77      0.73       126
+weighted avg       0.84      0.73      0.72       126
+
+Prediction period: 2019-07-01 00:00:00 to 2019-12-31 00:00:00
+Best jump penalty: 56.23413251903491, Best reg_alpha: 1.2659144011798318, Best Score: 0.076
+Feature importances:
+ DD-log_20            0.647440
+sortino_5            0.106240
+DD-log_5             0.040486
+ret_20               0.033870
+DD-log_60            0.020318
+ret_5                0.019328
+slope_diff_ewm       0.018072
+sortino_20           0.016778
+vix_logdiff_ewm      0.013280
+y2_diff_ewm          0.011813
+move_logdiff_ewma    0.010068
+bi5_diff_ewma        0.007916
+vol_diff_ewma        0.007658
+sortino_60           0.007497
+ret_60               0.007255
+bi10_diff_ewma       0.007204
+corr_diff_ewma       0.006901
+bi_slope_ewma        0.006721
+y10_diff_ewm         0.005999
+spvol_diff_ewma      0.005156
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.79      0.95      0.86        55
+       crash       0.95      0.81      0.88        75
+
+    accuracy                           0.87       130
+   macro avg       0.87      0.88      0.87       130
+weighted avg       0.88      0.87      0.87       130
+
+Prediction period: 2020-01-01 00:00:00 to 2020-06-30 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 0.2, Best Score: 0.047
+Feature importances:
+ DD-log_20            0.755753
+DD-log_60            0.033657
+DD-log_5             0.025325
+sortino_5            0.022911
+sortino_20           0.019529
+ret_5                0.014801
+ret_60               0.013503
+vol_diff_ewma        0.012880
+slope_diff_ewm       0.012274
+y2_diff_ewm          0.010230
+move_logdiff_ewma    0.009973
+y10_diff_ewm         0.009332
+ret_20               0.009312
+vix_logdiff_ewm      0.008889
+spvol_diff_ewma      0.008566
+corr_diff_ewma       0.007667
+bi5_diff_ewma        0.007027
+bi_slope_ewma        0.006983
+bi10_diff_ewma       0.006466
+sortino_60           0.004923
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.93      0.57      0.71        49
+       crash       0.78      0.97      0.87        78
+
+    accuracy                           0.82       127
+   macro avg       0.86      0.77      0.79       127
+weighted avg       0.84      0.82      0.81       127
+
+Prediction period: 2020-07-01 00:00:00 to 2020-12-31 00:00:00
+Best jump penalty: 56.23413251903491, Best reg_alpha: 0.44145488738336014, Best Score: 0.060
+Feature importances:
+ DD-log_20            0.721494
+DD-log_5             0.044998
+sortino_5            0.029223
+DD-log_60            0.024805
+ret_20               0.024770
+sortino_60           0.016003
+slope_diff_ewm       0.014595
+vix_logdiff_ewm      0.013896
+ret_5                0.013377
+move_logdiff_ewma    0.011711
+ret_60               0.011379
+bi10_diff_ewma       0.009744
+y2_diff_ewm          0.008990
+vol_diff_ewma        0.008439
+y10_diff_ewm         0.008354
+spvol_diff_ewma      0.008028
+corr_diff_ewma       0.007945
+sortino_20           0.007864
+bi_slope_ewma        0.007277
+bi5_diff_ewma        0.007109
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.44      0.06      0.11        66
+       crash       0.49      0.92      0.64        64
+
+    accuracy                           0.48       130
+   macro avg       0.47      0.49      0.37       130
+weighted avg       0.47      0.48      0.37       130
+
+Prediction period: 2021-01-01 00:00:00 to 2021-06-30 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 1.2659144011798318, Best Score: 0.068
+Feature importances:
+ DD-log_20            0.587445
+sortino_5            0.128087
+ret_20               0.050757
+ret_5                0.038059
+sortino_20           0.034120
+DD-log_5             0.023278
+DD-log_60            0.023109
+vix_logdiff_ewm      0.014622
+bi10_diff_ewma       0.013756
+slope_diff_ewm       0.010385
+ret_60               0.010069
+sortino_60           0.009963
+y2_diff_ewm          0.008659
+vol_diff_ewma        0.008525
+spvol_diff_ewma      0.007885
+move_logdiff_ewma    0.007536
+bi_slope_ewma        0.006892
+bi5_diff_ewma        0.006620
+y10_diff_ewm         0.006033
+corr_diff_ewma       0.004201
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.98      1.00      0.99        57
+       crash       1.00      0.99      0.99        70
+
+    accuracy                           0.99       127
+   macro avg       0.99      0.99      0.99       127
+weighted avg       0.99      0.99      0.99       127
+
+Prediction period: 2021-07-01 00:00:00 to 2021-12-31 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 4.081071705534972, Best Score: 0.062
+Feature importances:
+ DD-log_20            0.690017
+ret_20               0.110254
+DD-log_60            0.035894
+DD-log_5             0.030952
+ret_5                0.019889
+sortino_5            0.012289
+vol_diff_ewma        0.010780
+bi10_diff_ewma       0.009786
+corr_diff_ewma       0.009193
+y10_diff_ewm         0.008954
+ret_60               0.008691
+slope_diff_ewm       0.008594
+vix_logdiff_ewm      0.007774
+move_logdiff_ewma    0.007680
+y2_diff_ewm          0.007511
+sortino_60           0.006434
+bi_slope_ewma        0.006029
+spvol_diff_ewma      0.005249
+sortino_20           0.002341
+bi5_diff_ewma        0.001688
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.37      0.73      0.49        59
+       crash       0.00      0.00      0.00        72
+
+    accuracy                           0.33       131
+   macro avg       0.19      0.36      0.25       131
+weighted avg       0.17      0.33      0.22       131
+
+Prediction period: 2022-01-01 00:00:00 to 2022-06-30 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 0.44145488738336014, Best Score: 0.047
+Feature importances:
+ DD-log_20            0.628280
+ret_20               0.142467
+DD-log_60            0.029021
+DD-log_5             0.025164
+slope_diff_ewm       0.021858
+sortino_5            0.020091
+ret_5                0.017897
+y2_diff_ewm          0.013175
+bi10_diff_ewma       0.011600
+sortino_60           0.011135
+ret_60               0.011103
+vol_diff_ewma        0.010695
+vix_logdiff_ewm      0.010433
+y10_diff_ewm         0.008920
+corr_diff_ewma       0.008414
+spvol_diff_ewma      0.008094
+move_logdiff_ewma    0.007323
+bi_slope_ewma        0.005808
+sortino_20           0.004857
+bi5_diff_ewma        0.003665
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.91      0.45      0.61        66
+       crash       0.62      0.95      0.75        62
+
+    accuracy                           0.70       128
+   macro avg       0.77      0.70      0.68       128
+weighted avg       0.77      0.70      0.68       128
+
+Prediction period: 2022-07-01 00:00:00 to 2022-12-31 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 4.081071705534972, Best Score: 0.018
+Feature importances:
+ DD-log_20            0.609582
+ret_60               0.081060
+ret_20               0.062492
+sortino_60           0.050850
+DD-log_60            0.045031
+sortino_20           0.026803
+bi5_diff_ewma        0.025195
+ret_5                0.020877
+y10_diff_ewm         0.014279
+DD-log_5             0.012305
+slope_diff_ewm       0.008365
+vix_logdiff_ewm      0.008256
+vol_diff_ewma        0.007993
+sortino_5            0.006590
+spvol_diff_ewma      0.005735
+bi_slope_ewma        0.003936
+move_logdiff_ewma    0.002986
+y2_diff_ewm          0.002962
+bi10_diff_ewma       0.002947
+corr_diff_ewma       0.001757
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00       102
+       crash       0.22      1.00      0.35        28
+
+    accuracy                           0.22       130
+   macro avg       0.11      0.50      0.18       130
+weighted avg       0.05      0.22      0.08       130
+
+Prediction period: 2023-01-01 00:00:00 to 2023-06-30 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 1.2659144011798318, Best Score: 0.044
+Feature importances:
+ DD-log_20            0.686725
+ret_20               0.067528
+DD-log_60            0.061624
+ret_5                0.027317
+DD-log_5             0.024734
+bi5_diff_ewma        0.016898
+sortino_5            0.015140
+ret_60               0.011800
+y2_diff_ewm          0.010545
+bi_slope_ewma        0.009436
+spvol_diff_ewma      0.008683
+vix_logdiff_ewm      0.008208
+slope_diff_ewm       0.007705
+bi10_diff_ewma       0.007128
+y10_diff_ewm         0.007087
+vol_diff_ewma        0.006847
+move_logdiff_ewma    0.006370
+corr_diff_ewma       0.006083
+sortino_60           0.005783
+sortino_20           0.004358
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        50
+       crash       0.61      1.00      0.76        79
+
+    accuracy                           0.61       129
+   macro avg       0.31      0.50      0.38       129
+weighted avg       0.38      0.61      0.47       129
+
+Prediction period: 2023-07-01 00:00:00 to 2023-12-31 00:00:00
+Best jump penalty: 10.0, Best reg_alpha: 0.44145488738336014, Best Score: 0.033
+Feature importances:
+ DD-log_20            0.661286
+DD-log_60            0.061068
+sortino_5            0.045019
+DD-log_5             0.028515
+ret_5                0.026521
+ret_20               0.025906
+sortino_60           0.021328
+sortino_20           0.020259
+slope_diff_ewm       0.012648
+bi_slope_ewma        0.011913
+bi5_diff_ewma        0.010717
+ret_60               0.010493
+bi10_diff_ewma       0.009913
+spvol_diff_ewma      0.009582
+move_logdiff_ewma    0.008636
+y10_diff_ewm         0.008607
+vix_logdiff_ewm      0.007632
+corr_diff_ewma       0.007539
+y2_diff_ewm          0.006686
+vol_diff_ewma        0.005735
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.82      0.90        33
+       crash       0.94      1.00      0.97        95
+
+    accuracy                           0.95       128
+   macro avg       0.97      0.91      0.93       128
+weighted avg       0.96      0.95      0.95       128
+
+Prediction period: 2024-01-01 00:00:00 to 2024-06-30 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 0.44145488738336014, Best Score: 0.028
+Feature importances:
+ DD-log_20            0.657367
+DD-log_60            0.076314
+ret_60               0.038121
+DD-log_5             0.037331
+ret_20               0.032344
+y10_diff_ewm         0.018421
+sortino_60           0.016919
+sortino_20           0.015710
+sortino_5            0.014175
+ret_5                0.013642
+slope_diff_ewm       0.011654
+move_logdiff_ewma    0.010559
+vol_diff_ewma        0.009493
+spvol_diff_ewma      0.008582
+y2_diff_ewm          0.007756
+bi10_diff_ewma       0.007327
+bi5_diff_ewma        0.007227
+vix_logdiff_ewm      0.005886
+bi_slope_ewma        0.005664
+corr_diff_ewma       0.005506
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.32      1.00      0.48        41
+       crash       0.00      0.00      0.00        88
+
+    accuracy                           0.32       129
+   macro avg       0.16      0.50      0.24       129
+weighted avg       0.10      0.32      0.15       129
+
+Prediction period: 2024-07-01 00:00:00 to 2024-12-31 00:00:00
+Best jump penalty: 316.2277660168379, Best reg_alpha: 4.081071705534972, Best Score: 0.019
+Feature importances:
+ DD-log_20            0.823606
+DD-log_60            0.050361
+ret_20               0.019771
+DD-log_5             0.015652
+ret_5                0.013675
+move_logdiff_ewma    0.012867
+sortino_60           0.008130
+slope_diff_ewm       0.007121
+spvol_diff_ewma      0.006509
+bi10_diff_ewma       0.005923
+ret_60               0.005166
+vol_diff_ewma        0.004786
+vix_logdiff_ewm      0.004598
+sortino_5            0.004414
+bi5_diff_ewma        0.003823
+sortino_20           0.003576
+y10_diff_ewm         0.003479
+bi_slope_ewma        0.002506
+y2_diff_ewm          0.002238
+corr_diff_ewma       0.001800
+dtype: float32
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.47      0.77      0.59        66
+       crash       0.35      0.12      0.18        65
+
+    accuracy                           0.45       131
+   macro avg       0.41      0.45      0.38       131
+weighted avg       0.41      0.45      0.39       131
+
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.052149    0.062842  0.829838  ... -0.015651  0.332461           0.724407
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...  cvar_99    calmar  information_ratio
+0       0.014812    0.072976  0.202974  ... -0.01488  0.049925           0.094439
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.040071    0.055875  0.717152  ... -0.016873  0.183867           0.449741
+
+[1 rows x 8 columns]
+   annual_return  annual_vol   sharpe  ...   cvar_99    calmar  information_ratio
+0       0.011264     0.04261  0.26435  ... -0.009959  0.050954                NaN
+
+[1 rows x 8 columns]
+[Full loop] 2024-07-01～2024-12-31 total 1789.0s

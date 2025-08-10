@@ -1,0 +1,93 @@
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_KPLS.py:146: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_pc = X_with_pc.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_KPLS.py:176: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_ns = X_with_ns.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_KPLS.py:388: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  bi_aligned = bi_aligned.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_KPLS.py:451: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  sw_aligned = sw_aligned.fillna(method="bfill")
+Daily returns stored in `data.ret_ser`:
+--------------------------------------------------
+date
+1982-01-11   -0.015971
+1982-01-12    0.010590
+1982-01-13   -0.010331
+1982-01-14    0.006727
+1982-01-15   -0.004911
+                ...   
+2025-03-24   -0.006368
+2025-03-26   -0.000698
+2025-03-27   -0.001434
+2025-03-28    0.008694
+2025-03-31    0.003802
+Name: UST10, Length: 11272, dtype: float64
+--------------------------------------------------
+Features stored in `data.X`:
+--------------------------------------------------
+               ret_5  DD-log_5  sortino_5  ...    ret_60  DD-log_60  sortino_60
+date                                       ...                                 
+1982-01-11 -0.003413 -4.817972  -0.422206  ...  0.000045  -5.117899    0.007515
+1982-01-12 -0.001600 -4.887287  -0.212159  ...  0.000166  -5.123688    0.027946
+1982-01-13 -0.002730 -4.833562  -0.343076  ...  0.000046  -5.112249    0.007565
+1982-01-14 -0.001506 -4.902876  -0.202823  ...  0.000122  -5.118037    0.020454
+1982-01-15 -0.001947 -4.940675  -0.272293  ...  0.000065  -5.119924    0.010797
+...              ...       ...        ...  ...       ...        ...         ...
+2025-03-24 -0.000293 -5.867173  -0.103587  ...  0.000157  -5.872110    0.055646
+2025-03-26 -0.000346 -5.931987  -0.130275  ...  0.000147  -5.877529    0.052444
+2025-03-27 -0.000487 -5.980048  -0.192394  ...  0.000129  -5.881786    0.046160
+2025-03-28  0.000702 -6.049362   0.297522  ...  0.000227  -5.887562    0.081898
+2025-03-31  0.001103 -6.118677   0.501149  ...  0.000268  -5.893339    0.097260
+
+[11272 rows x 9 columns]
+[base] train: 1982-01-11 00:00:00〜1993-12-31 00:00:00 | validation 1994-01-03 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[NS] train: 1982-01-11 00:00:00〜1993-12-31 00:00:00 | validation 1994-01-03 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[PCA] train: 1982-01-11 00:00:00〜1993-12-31 00:00:00 | validation 1994-01-03 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+Traceback (most recent call last):
+  File "/home/tk9623/JM_to_FI/UST10_cont1.4.5_KPLS.py", line 573, in <module>
+    xgb.fit(X_tr_lat, y_tr_bin)                           # → 通れば次へ
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/core.py", line 729, in inner_f
+    return func(**kwargs)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/sklearn.py", line 1682, in fit
+    self._Booster = train(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/core.py", line 729, in inner_f
+    return func(**kwargs)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/training.py", line 183, in train
+    bst.update(dtrain, iteration=i, fobj=obj)
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/core.py", line 2246, in update
+    _check_call(
+  File "/home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/core.py", line 310, in _check_call
+    raise XGBoostError(py_str(_LIB.XGBGetLastError()))
+xgboost.core.XGBoostError: [18:57:18] /workspace/src/objective/./regression_loss.h:69: Check failed: base_score > 0.0f && base_score < 1.0f: base_score must be in (0,1) for logistic loss, got: 0
+Stack trace:
+  [bt] (0) /home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x2a6ecc) [0x1458bf435ecc]
+  [bt] (1) /home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0xeda139) [0x1458c0069139]
+  [bt] (2) /home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x682723) [0x1458bf811723]
+  [bt] (3) /home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x682aec) [0x1458bf811aec]
+  [bt] (4) /home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(+0x68d03b) [0x1458bf81c03b]
+  [bt] (5) /home/tk9623/.conda/envs/my/lib/python3.10/site-packages/xgboost/lib/libxgboost.so(XGBoosterUpdateOneIter+0x77) [0x1458bf345fa7]
+  [bt] (6) /home/tk9623/.conda/envs/my/lib/python3.10/lib-dynload/../../libffi.so.8(+0xa052) [0x145a022fa052]
+  [bt] (7) /home/tk9623/.conda/envs/my/lib/python3.10/lib-dynload/../../libffi.so.8(+0x8925) [0x145a022f8925]
+  [bt] (8) /home/tk9623/.conda/envs/my/lib/python3.10/lib-dynload/../../libffi.so.8(ffi_call+0xde) [0x145a022f906e]
+
+
