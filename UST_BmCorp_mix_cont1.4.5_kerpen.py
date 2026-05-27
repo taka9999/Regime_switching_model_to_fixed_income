@@ -39,9 +39,9 @@ asset1file = 'TRXVUSGOV10U(TOT_RETURN)_import'
 asset2 = 'BmCorp'
 asset2file = 'luactruu'
 
-datastart = '1989-01-01'
-valstart = '2000-01-01'
-teststart = '2005-01-01'
+datastart = '1999-01-01'
+valstart = '2010-01-01'
+teststart = '2015-01-01'
 dataend = '2025-03-31'
 
 pcafile = "pca_scores_dynamic_ewrb5.csv"
@@ -488,7 +488,7 @@ jm_setting = dict(
     #jump_penalty=jump_penalty,#set in each application
     cont=True,
     #kernel = 'poly',kernel_params = {'degree': 3, 'gamma': 0.02, 'coef0': 1},#n_kernel_features = 1000, # set in each application
-    use_spectral_penalty = True, sp_kernel = 'rq', sp_kernel_params = {'alpha': 20, 'length_scale':5}, normalize_laplacian = True,
+    use_spectral_penalty = True, sp_kernel = 'rq', sp_kernel_params = {'alpha': 20, 'length_scale':100}, normalize_laplacian = True,
     #use_weighted_jump_penalty = True, wjp_kernel = 'rq', wjp_kernel_params = {'alpha': 20, 'length_scale':100}, wjp_normalize_laplacian = True,
     )
 
@@ -498,6 +498,9 @@ from xgboost import XGBRegressor
 from xgboost import XGBClassifier
 from sklearn.metrics import classification_report
 from sklearn.model_selection import TimeSeriesSplit
+
+from joblib import Parallel, delayed
+from sklearn.model_selection import ParameterGrid, TimeSeriesSplit
 
 tscv = TimeSeriesSplit(n_splits = 5)
 
@@ -515,6 +518,9 @@ perf_jm_xgb_dict_roll = {}
 regime_all = []
 
 
+param_grid = {'lam': lambda_list, 'alpha': reg_alpha_list}
+grid = list(ParameterGrid(param_grid))
+
 patterns = {
     'base+ext_features'       : ('base', ext_features_pre),
     'NS+ext_features2'        : ('NS',   ext_features_pre2),
@@ -522,7 +528,55 @@ patterns = {
     'base+ext_features+ns'    : ('base', ext_features_pre_with_ns),
     'base+ext_features+pc'    : ('base', ext_features_pre_with_pc),
 }
+def evaluate_params(lam, alpha, Xj_train, ret_all, rf_all, ext_features_df, jm_setting, tr_cost):
+    tscv = TimeSeriesSplit(n_splits=5)
+    cv_scores = []
+    for train_idx, val_idx in tscv.split(Xj_train):
+        # --- 各フォールドの処理をここに ---
+        X_tr_fold, y_tr_fold = Xj_train.iloc[train_idx], ret_all.loc[Xj_train.index[train_idx]]
+        X_val_fold, y_val_fold = Xj_train.iloc[val_idx], ret_all.loc[Xj_train.index[val_idx]]
+        # JumpModel のフィッティング
+        jm = JumpModel(**jm_setting, jump_penalty=lam, n_kernel_features=min(500, len(train_idx)//2))
+        jm.fit(X_tr_fold, y_tr_fold, sort_by="cumret")
+        label_jm = pd.Series(jm.labels_, index=X_tr_fold.index)
+        y_train = pd.Series(label_jm.iloc[1:].values, index = X_tr_fold.index[:-1])
+        
+        if len(y_train.unique()) < 2:
+            continue
+        
+        X_feat_tr = pd.concat([X_tr_fold.loc[X_tr_fold.index[:-1]], ext_features_df.reindex(X_tr_fold.index[:-1])], axis = 1)
+        X_feat_tr = X_feat_tr.dropna(axis=1, how='any')
+        
+        feature_cols = X_feat_tr.columns
+        X_feat_val = pd.concat([X_val_fold, ext_features_df.reindex(X_val_fold.index)], axis=1)
+        X_feat_val = X_feat_val.reindex(columns=feature_cols)
+        
+        xgb = XGBClassifier(objective='binary:logistic',eval_metric='logloss',random_state=42,reg_alpha = alpha)
+        xgb.fit(X_feat_tr.values, y_train.values)
 
+        idx_sh = X_feat_val.index[1:]
+        p_tr = xgb.predict_proba(X_feat_val.values)
+        smooth = pd.Series(p_tr[:, 1], index = X_feat_val.index).ewm(halflife = 4, adjust = False).mean()
+
+        y_pred = (smooth>0.5).astype(int)
+        y_pred = pd.Series(y_pred[:-1].values, index = idx_sh)
+        regime = 1 - y_pred
+        
+        ret_tr = ret_ser1.reindex(idx_sh)
+        rf_tr = rf_all.reindex(idx_sh)
+        ret2_aligned = ret_ser2.reindex(idx_sh, method="ffill")
+        strat = ret_tr.where(regime ==1, other = ret2_aligned)
+        switch = (regime != regime.shift(1)).astype(float)  # True の日は 1.0, それ以外は 0.0
+        cost  = switch * tr_cost
+        strat = strat - cost
+
+        excess = strat - rf_tr
+        mu = excess.mean() * 252
+        sd = strat.std() * np.sqrt(252)
+        sharpe = mu /sd if sd>0 else -np.inf
+        cv_scores.append(mu)
+    return lam, alpha, np.mean(cv_scores)
+    
 for pname, (umodel, ext_features_df) in patterns.items():
     period_start = time.perf_counter()
     X_all      = pd.concat([processed_train[umodel],processed_val[umodel],processed_test[umodel]],axis = 0, ignore_index = False)
@@ -545,60 +599,19 @@ for pname, (umodel, ext_features_df) in patterns.items():
         best_lambda = None
         best_alpha = None
         best_model = None
-
-        for lam in lambda_list:
-            for alpha in reg_alpha_list:
-                cv_scores = []
-                for train_idx, val_idx in tscv.split(Xj_train):
-                    X_tr_fold = Xj_train.iloc[train_idx]
-                    y_tr_fold = ret_all.loc[X_tr_fold.index]
-                    X_val_fold = Xj_train.iloc[val_idx]
-                    y_val_fold = ret_all.loc[X_val_fold.index]
-
-                    n_samples = X_tr_fold.shape[0]
-                    n_kernel_features = min(500, n_samples // 2)
-
-                    jm = JumpModel(**jm_setting, jump_penalty=lam, n_kernel_features=n_kernel_features)
-                    jm.fit(X_tr_fold, y_tr_fold, sort_by="cumret")
-                    label_jm = jm.labels_
-                    y_train = pd.Series(label_jm.iloc[1:].values, index = X_tr_fold.index[:-1])
-                    X_feat_tr = pd.concat([X_tr_fold.loc[X_tr_fold.index[:-1]], ext_features_df.reindex(X_tr_fold.index[:-1])], axis = 1)
-                    X_feat_tr = X_feat_tr.dropna(axis=0, how='all')
-                    X_feat_val = pd.concat([X_val_fold, ext_features_df.reindex(X_val_fold.index)], axis=1)
-                    X_feat_val = X_feat_val.dropna(axis=0, how='all')
-
-                    xgb = XGBClassifier(objective = "binary:logistic",eval_metric='logloss', random_state = 42, reg_alpha = alpha)
-                    xgb.fit(X_feat_tr.values, y_train.values)
-
-                    idx_sh = X_feat_val.index[1:]
-                    p_tr = xgb.predict_proba(X_feat_val.values)
-                    smooth = pd.Series(p_tr[:, 1], index = X_feat_val.index).ewm(halflife = 4, adjust = False).mean()
-                    y_pred = (smooth>0.5).astype(int)
-                    y_pred = pd.Series(y_pred[:-1].values, index = idx_sh)
-                    regime = 1 - y_pred
-                    
-                    ret_tr = ret_ser1.reindex(idx_sh)
-                    rf_tr = rf_all.reindex(idx_sh)
-                    ret2_aligned = ret_ser2.reindex(idx_sh, method="ffill")
-                    strat = ret_tr.where(regime ==1, other = ret2_aligned)
-                    switch = (regime != regime.shift(1)).astype(float)  # True の日は 1.0, それ以外は 0.0
-                    cost  = switch * tr_cost
-                    strat = strat - cost
-
-                    excess = strat - rf_tr
-                    mu = excess.mean() * 252
-                    sd = strat.std() * np.sqrt(252)
-                    sharpe = mu /sd if sd>0 else -np.inf
-                    cv_scores.append(mu)
-
-                mean_score = np.mean(cv_scores)
-                if mean_score > best_score:
-                    best_score = mean_score
-                    best_lambda = lam
-                    best_alpha = alpha
-
+        
+        results = Parallel(n_jobs=-1, verbose=10)(
+            delayed(evaluate_params)(
+                params['lam'], params['alpha'],
+                Xj_train, ret_all, rf_all, ext_features_df, jm_setting, tr_cost
+            )
+            for params in grid
+        )
+        
         print(f"Prediction period: {pred_start} to {pred_end}")
-        print(f"Best jump penalty: {best_lambda}, Best reg_alpha: {best_alpha}, Best Score: {best_score:.3f}")
+        best_lambda, best_alpha, best_score = max(results, key=lambda x: x[2])
+        print(f"Best: jump penalty ={best_lambda}, reg_alpha ={best_alpha}, score={best_score:.3f}")
+
 
         n_samples = Xj_train.shape[0]
         n_kernel_features = min(1000, n_samples // 2)
@@ -693,6 +706,14 @@ for pname, (umodel, ext_features_df) in patterns.items():
         benchmark  = bench.reindex(pred_idx).fillna(0.0)
     )
     print(perf_bench)
+    
+    perf_bench2 = compute_performance(
+        ret_series = bench2.reindex(pred_idx).fillna(0.0),
+        rf_series  = rf_aligned,
+        freq       = 252,
+        benchmark  = bench.reindex(pred_idx).fillna(0.0)
+    )
+    print(perf_bench2)
 
     cum_bh1    = ret_val.cumsum()
     cum_bh2   = ret2_aligned.cumsum()
@@ -710,11 +731,12 @@ for pname, (umodel, ext_features_df) in patterns.items():
     results_xgb_roll[pname] = {
         'best_params':         best_lambda,
         'best_cv_score':       best_score,
-        'classification_report': clf_report,
+        'classification_report': clf_xgb_roll,
         'perf_bh':             perf_bh,
         'perf_bh2':            perf_bh2,
         'perf_jm_xgb':         perf_jm_xgb,
         'perf_bench':         perf_bench,
+        'perf_bench2':         perf_bench2,
         'cum_bh1':              cum_bh1,
         'cum_bh2':              cum_bh2,
         'cum_strat':           cum_jm_xgb,
@@ -746,7 +768,7 @@ perf_df = perf_df.applymap(lambda cell: cell.item() if isinstance(cell, pd.Serie
 
 import pickle
 resdir = 'results'
-nbname = 'UST_BmCorp_mix_cont1.4.5_GPU_rqkerpen'
+nbname = 'UST_BmCorp_mix_cont1.4.5_GPU_rqkerpen_short'
 
 results_to_save = {}
 for pname, res in results_xgb_roll.items():

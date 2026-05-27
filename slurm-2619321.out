@@ -1,0 +1,67 @@
+/home/tk9623/JM_to_FI/BmCorp_cont1.4.5_rqker.py:147: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_pc = X_with_pc.fillna(method="bfill")
+/home/tk9623/JM_to_FI/BmCorp_cont1.4.5_rqker.py:177: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_ns = X_with_ns.fillna(method="bfill")
+/home/tk9623/JM_to_FI/BmCorp_cont1.4.5_rqker.py:389: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  bi_aligned = bi_aligned.fillna(method="bfill")
+Daily returns stored in `data.ret_ser`:
+--------------------------------------------------
+date
+1989-01-03    0.001834
+1989-01-04    0.002782
+1989-01-05   -0.001377
+1989-01-06   -0.001103
+1989-01-09    0.001579
+                ...   
+2025-03-25    0.001342
+2025-03-26   -0.003026
+2025-03-27   -0.001262
+2025-03-28    0.004824
+2025-03-31    0.002157
+Name: BmCorp, Length: 9084, dtype: float64
+--------------------------------------------------
+Features stored in `data.X`:
+--------------------------------------------------
+               ret_5  DD-log_5  sortino_5  ...    ret_60  DD-log_60  sortino_60
+date                                       ...                                 
+1989-01-03  0.005520 -5.121800   0.925343  ...  0.008545  -4.335641    0.652627
+1989-01-04  0.005165 -5.191115   0.928070  ...  0.008471  -4.342100    0.651169
+1989-01-05  0.004318 -5.255898   0.827827  ...  0.008345  -4.348478    0.645570
+1989-01-06  0.003617 -5.321898   0.740591  ...  0.008224  -4.354872    0.640295
+1989-01-09  0.003353 -5.391213   0.735862  ...  0.008139  -4.361306    0.637771
+...              ...       ...        ...  ...       ...        ...         ...
+2025-03-25 -0.000013 -6.231752  -0.006696  ...  0.000167  -6.133690    0.077047
+2025-03-26 -0.000403 -6.150198  -0.188996  ...  0.000130  -6.128282    0.059811
+2025-03-27 -0.000514 -6.194145  -0.251946  ...  0.000114  -6.132115    0.052678
+2025-03-28  0.000177 -6.263460   0.092777  ...  0.000169  -6.137892    0.078032
+2025-03-31  0.000433 -6.332774   0.243659  ...  0.000191  -6.143668    0.089120
+
+[9084 rows x 9 columns]
+[base] train: 1989-01-03 00:00:00〜1999-12-31 00:00:00 | validation 2000-01-03 00:00:00 ~ 2004-12-31 00:00:00 |test: 2005-01-03 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[NS] train: 1989-01-03 00:00:00〜1999-12-31 00:00:00 | validation 2000-01-03 00:00:00 ~ 2004-12-31 00:00:00 |test: 2005-01-03 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[PCA] train: 1989-01-03 00:00:00〜1999-12-31 00:00:00 | validation 2000-01-03 00:00:00 ~ 2004-12-31 00:00:00 |test: 2005-01-03 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+Traceback (most recent call last):
+  File "/home/tk9623/JM_to_FI/BmCorp_cont1.4.5_rqker.py", line 445, in <module>
+    for hl in hl_ext:
+NameError: name 'hl_ext' is not defined

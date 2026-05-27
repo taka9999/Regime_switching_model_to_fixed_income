@@ -1,0 +1,2584 @@
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_rqpen_regLSTM.py:146: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_pc = X_with_pc.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_rqpen_regLSTM.py:176: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_ns = X_with_ns.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_rqpen_regLSTM.py:388: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  bi_aligned = bi_aligned.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_rqpen_regLSTM.py:451: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  sw_aligned = sw_aligned.fillna(method="bfill")
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+Daily returns stored in `data.ret_ser`:
+--------------------------------------------------
+date
+1982-01-11   -0.015971
+1982-01-12    0.010590
+1982-01-13   -0.010331
+1982-01-14    0.006727
+1982-01-15   -0.004911
+                ...   
+2025-03-24   -0.006368
+2025-03-26   -0.000698
+2025-03-27   -0.001434
+2025-03-28    0.008694
+2025-03-31    0.003802
+Name: UST10, Length: 11272, dtype: float64
+--------------------------------------------------
+Features stored in `data.X`:
+--------------------------------------------------
+               ret_5  DD-log_5  sortino_5  ...    ret_60  DD-log_60  sortino_60
+date                                       ...                                 
+1982-01-11 -0.003413 -4.817972  -0.422206  ...  0.000045  -5.117899    0.007515
+1982-01-12 -0.001600 -4.887287  -0.212159  ...  0.000166  -5.123688    0.027946
+1982-01-13 -0.002730 -4.833562  -0.343076  ...  0.000046  -5.112249    0.007565
+1982-01-14 -0.001506 -4.902876  -0.202823  ...  0.000122  -5.118037    0.020454
+1982-01-15 -0.001947 -4.940675  -0.272293  ...  0.000065  -5.119924    0.010797
+...              ...       ...        ...  ...       ...        ...         ...
+2025-03-24 -0.000293 -5.867173  -0.103587  ...  0.000157  -5.872110    0.055646
+2025-03-26 -0.000346 -5.931987  -0.130275  ...  0.000147  -5.877529    0.052444
+2025-03-27 -0.000487 -5.980048  -0.192394  ...  0.000129  -5.881786    0.046160
+2025-03-28  0.000702 -6.049362   0.297522  ...  0.000227  -5.887562    0.081898
+2025-03-31  0.001103 -6.118677   0.501149  ...  0.000268  -5.893339    0.097260
+
+[11272 rows x 9 columns]
+[base] train: 1982-01-11 00:00:00〜1993-12-31 00:00:00 | validation 1994-01-03 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[NS] train: 1982-01-11 00:00:00〜1993-12-31 00:00:00 | validation 1994-01-03 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[PCA] train: 1982-01-11 00:00:00〜1993-12-31 00:00:00 | validation 1994-01-03 00:00:00 ~ 2003-12-31 00:00:00 |test: 2004-01-01 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.2min remaining:  4.0min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.2min remaining:  2.3min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.2min remaining:  1.5min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.2min remaining:   55.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.2min remaining:   35.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.2min remaining:   20.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_rqpen_regLSTM.py:876: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   34.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.2min remaining:   19.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Prediction period: 1994-01-01 00:00:00 to 1994-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.050
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.30      0.47        33
+       crash       0.81      1.00      0.89        95
+
+    accuracy                           0.82       128
+   macro avg       0.90      0.65      0.68       128
+weighted avg       0.86      0.82      0.78       128
+
+Prediction period: 1994-07-01 00:00:00 to 1994-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        69
+       crash       0.47      1.00      0.64        61
+
+    accuracy                           0.47       130
+   macro avg       0.23      0.50      0.32       130
+weighted avg       0.22      0.47      0.30       130
+
+Prediction period: 1995-01-01 00:00:00 to 1995-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.025
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.79      0.82      0.80       103
+       crash       0.17      0.15      0.16        26
+
+    accuracy                           0.68       129
+   macro avg       0.48      0.48      0.48       129
+weighted avg       0.67      0.68      0.67       129
+
+Prediction period: 1995-07-01 00:00:00 to 1995-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.019
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.88      1.00      0.94        96
+       crash       1.00      0.61      0.75        33
+
+    accuracy                           0.90       129
+   macro avg       0.94      0.80      0.85       129
+weighted avg       0.91      0.90      0.89       129
+
+Prediction period: 1996-01-01 00:00:00 to 1996-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.97      0.99        35
+       crash       0.99      1.00      0.99        94
+
+    accuracy                           0.99       129
+   macro avg       0.99      0.99      0.99       129
+weighted avg       0.99      0.99      0.99       129
+
+Prediction period: 1996-07-01 00:00:00 to 1996-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.022
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.9s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.1s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.36      1.00      0.52        27
+       crash       1.00      0.53      0.69       104
+
+    accuracy                           0.63       131
+   macro avg       0.68      0.76      0.61       131
+weighted avg       0.87      0.63      0.66       131
+
+Prediction period: 1997-01-01 00:00:00 to 1997-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.026
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.6min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.86      0.89      0.87        62
+       crash       0.89      0.86      0.88        66
+
+    accuracy                           0.88       128
+   macro avg       0.88      0.88      0.87       128
+weighted avg       0.88      0.88      0.88       128
+
+Prediction period: 1997-07-01 00:00:00 to 1997-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.026
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.78      1.00      0.88        88
+       crash       1.00      0.42      0.59        43
+
+    accuracy                           0.81       131
+   macro avg       0.89      0.71      0.73       131
+weighted avg       0.85      0.81      0.78       131
+
+Prediction period: 1998-01-01 00:00:00 to 1998-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.028
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.18      1.00      0.31        19
+       crash       1.00      0.22      0.36       109
+
+    accuracy                           0.34       128
+   macro avg       0.59      0.61      0.33       128
+weighted avg       0.88      0.34      0.35       128
+
+Prediction period: 1998-07-01 00:00:00 to 1998-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   34.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.34      1.00      0.50        33
+       crash       1.00      0.34      0.50        98
+
+    accuracy                           0.50       131
+   macro avg       0.67      0.67      0.50       131
+weighted avg       0.83      0.50      0.50       131
+
+Prediction period: 1999-01-01 00:00:00 to 1999-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.032
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.15      0.27        65
+       crash       0.53      1.00      0.70        63
+
+    accuracy                           0.57       128
+   macro avg       0.77      0.58      0.48       128
+weighted avg       0.77      0.57      0.48       128
+
+Prediction period: 1999-07-01 00:00:00 to 1999-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.1s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        51
+       crash       0.61      1.00      0.76        80
+
+    accuracy                           0.61       131
+   macro avg       0.31      0.50      0.38       131
+weighted avg       0.37      0.61      0.46       131
+
+Prediction period: 2000-01-01 00:00:00 to 2000-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.022
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        57
+       crash       0.56      1.00      0.72        72
+
+    accuracy                           0.56       129
+   macro avg       0.28      0.50      0.36       129
+weighted avg       0.31      0.56      0.40       129
+
+Prediction period: 2000-07-01 00:00:00 to 2000-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.6min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.1s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.5min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.23      1.00      0.37        23
+       crash       1.00      0.27      0.43       106
+
+    accuracy                           0.40       129
+   macro avg       0.61      0.64      0.40       129
+weighted avg       0.86      0.40      0.42       129
+
+Prediction period: 2001-01-01 00:00:00 to 2001-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.022
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.14      0.25        70
+       crash       0.50      1.00      0.66        59
+
+    accuracy                           0.53       129
+   macro avg       0.75      0.57      0.46       129
+weighted avg       0.77      0.53      0.44       129
+
+Prediction period: 2001-07-01 00:00:00 to 2001-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.019
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.24      0.39        92
+       crash       0.35      1.00      0.52        38
+
+    accuracy                           0.46       130
+   macro avg       0.68      0.62      0.45       130
+weighted avg       0.81      0.46      0.43       130
+
+Prediction period: 2002-01-01 00:00:00 to 2002-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.016
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.6min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.13      0.23        98
+       crash       0.26      1.00      0.41        30
+
+    accuracy                           0.34       128
+   macro avg       0.63      0.57      0.32       128
+weighted avg       0.83      0.34      0.28       128
+
+Prediction period: 2002-07-01 00:00:00 to 2002-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.012
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.73      0.63      0.68        81
+       crash       0.51      0.62      0.56        50
+
+    accuracy                           0.63       131
+   macro avg       0.62      0.62      0.62       131
+weighted avg       0.64      0.63      0.63       131
+
+Prediction period: 2003-01-01 00:00:00 to 2003-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.017
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:   58.7s remaining:  3.4min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   50.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   31.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.71      0.77      0.74        48
+       crash       0.86      0.81      0.83        80
+
+    accuracy                           0.80       128
+   macro avg       0.78      0.79      0.79       128
+weighted avg       0.80      0.80      0.80       128
+
+Prediction period: 2003-07-01 00:00:00 to 2003-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        92
+       crash       0.30      1.00      0.46        39
+
+    accuracy                           0.30       131
+   macro avg       0.15      0.50      0.23       131
+weighted avg       0.09      0.30      0.14       131
+
+Prediction period: 2004-01-01 00:00:00 to 2004-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.033
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.97      0.52      0.68        61
+       crash       0.70      0.99      0.82        68
+
+    accuracy                           0.77       129
+   macro avg       0.83      0.75      0.75       129
+weighted avg       0.83      0.77      0.75       129
+
+Prediction period: 2004-07-01 00:00:00 to 2004-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.023
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.1s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.9s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.51      0.62      0.56        65
+       crash       0.53      0.42      0.47        66
+
+    accuracy                           0.52       131
+   macro avg       0.52      0.52      0.52       131
+weighted avg       0.52      0.52      0.51       131
+
+Prediction period: 2005-01-01 00:00:00 to 2005-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.97      0.86      0.91        85
+       crash       0.77      0.95      0.85        43
+
+    accuracy                           0.89       128
+   macro avg       0.87      0.91      0.88       128
+weighted avg       0.91      0.89      0.89       128
+
+Prediction period: 2005-07-01 00:00:00 to 2005-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.033
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.5s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.67      0.70      0.69        53
+       crash       0.79      0.77      0.78        77
+
+    accuracy                           0.74       130
+   macro avg       0.73      0.73      0.73       130
+weighted avg       0.74      0.74      0.74       130
+
+Prediction period: 2006-01-01 00:00:00 to 2006-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.7s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.22      0.35        79
+       crash       0.45      1.00      0.62        50
+
+    accuracy                           0.52       129
+   macro avg       0.72      0.61      0.49       129
+weighted avg       0.79      0.52      0.46       129
+
+Prediction period: 2006-07-01 00:00:00 to 2006-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.017
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.9s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.7s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.48      1.00      0.65        53
+       crash       1.00      0.25      0.40        76
+
+    accuracy                           0.56       129
+   macro avg       0.74      0.62      0.53       129
+weighted avg       0.79      0.56      0.50       129
+
+Prediction period: 2007-01-01 00:00:00 to 2007-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.016
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.70      0.34      0.46        82
+       crash       0.39      0.74      0.51        47
+
+    accuracy                           0.49       129
+   macro avg       0.55      0.54      0.49       129
+weighted avg       0.59      0.49      0.48       129
+
+Prediction period: 2007-07-01 00:00:00 to 2007-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.008
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.5s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.68      0.99      0.81        78
+       crash       0.94      0.31      0.46        52
+
+    accuracy                           0.72       130
+   macro avg       0.81      0.65      0.64       130
+weighted avg       0.79      0.72      0.67       130
+
+Prediction period: 2008-01-01 00:00:00 to 2008-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.011
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.46      0.44      0.45        48
+       crash       0.67      0.69      0.68        81
+
+    accuracy                           0.60       129
+   macro avg       0.57      0.56      0.56       129
+weighted avg       0.59      0.60      0.60       129
+
+Prediction period: 2008-07-01 00:00:00 to 2008-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.018
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.58      0.81      0.68        31
+       crash       0.93      0.82      0.87       100
+
+    accuracy                           0.82       131
+   macro avg       0.76      0.81      0.77       131
+weighted avg       0.85      0.82      0.83       131
+
+Prediction period: 2009-01-01 00:00:00 to 2009-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.042
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.21      0.14      0.17        29
+       crash       0.77      0.85      0.81        99
+
+    accuracy                           0.69       128
+   macro avg       0.49      0.49      0.49       128
+weighted avg       0.64      0.69      0.66       128
+
+Prediction period: 2009-07-01 00:00:00 to 2009-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.036
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        84
+       crash       0.36      1.00      0.53        47
+
+    accuracy                           0.36       131
+   macro avg       0.18      0.50      0.26       131
+weighted avg       0.13      0.36      0.19       131
+
+Prediction period: 2010-01-01 00:00:00 to 2010-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.64      0.82      0.72        44
+       crash       0.89      0.76      0.82        84
+
+    accuracy                           0.78       128
+   macro avg       0.77      0.79      0.77       128
+weighted avg       0.80      0.78      0.79       128
+
+Prediction period: 2010-07-01 00:00:00 to 2010-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.53      0.69        95
+       crash       0.44      1.00      0.62        36
+
+    accuracy                           0.66       131
+   macro avg       0.72      0.76      0.65       131
+weighted avg       0.85      0.66      0.67       131
+
+Prediction period: 2011-01-01 00:00:00 to 2011-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.028
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.56      0.72        55
+       crash       0.75      1.00      0.86        73
+
+    accuracy                           0.81       128
+   macro avg       0.88      0.78      0.79       128
+weighted avg       0.86      0.81      0.80       128
+
+Prediction period: 2011-07-01 00:00:00 to 2011-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.49      1.00      0.66        49
+       crash       1.00      0.37      0.54        81
+
+    accuracy                           0.61       130
+   macro avg       0.74      0.69      0.60       130
+weighted avg       0.81      0.61      0.58       130
+
+Prediction period: 2012-01-01 00:00:00 to 2012-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.042
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.61      0.78      0.69        46
+       crash       0.86      0.72      0.78        83
+
+    accuracy                           0.74       129
+   macro avg       0.73      0.75      0.74       129
+weighted avg       0.77      0.74      0.75       129
+
+Prediction period: 2012-07-01 00:00:00 to 2012-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.043
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.42      0.86      0.56        43
+       crash       0.86      0.41      0.56        87
+
+    accuracy                           0.56       130
+   macro avg       0.64      0.64      0.56       130
+weighted avg       0.71      0.56      0.56       130
+
+Prediction period: 2013-01-01 00:00:00 to 2013-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.045
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.78      0.80      0.79        49
+       crash       0.87      0.86      0.87        79
+
+    accuracy                           0.84       128
+   macro avg       0.83      0.83      0.83       128
+weighted avg       0.84      0.84      0.84       128
+
+Prediction period: 2013-07-01 00:00:00 to 2013-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.038
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        75
+       crash       0.43      1.00      0.60        56
+
+    accuracy                           0.43       131
+   macro avg       0.21      0.50      0.30       131
+weighted avg       0.18      0.43      0.26       131
+
+Prediction period: 2014-01-01 00:00:00 to 2014-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.029
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.59      0.49      0.54        84
+       crash       0.27      0.36      0.31        44
+
+    accuracy                           0.45       128
+   macro avg       0.43      0.43      0.42       128
+weighted avg       0.48      0.45      0.46       128
+
+Prediction period: 2014-07-01 00:00:00 to 2014-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.038
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.56      1.00      0.72        68
+       crash       1.00      0.14      0.25        63
+
+    accuracy                           0.59       131
+   macro avg       0.78      0.57      0.48       131
+weighted avg       0.77      0.59      0.49       131
+
+Prediction period: 2015-01-01 00:00:00 to 2015-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.046
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.36      1.00      0.53        25
+       crash       1.00      0.56      0.72       103
+
+    accuracy                           0.65       128
+   macro avg       0.68      0.78      0.62       128
+weighted avg       0.87      0.65      0.68       128
+
+Prediction period: 2015-07-01 00:00:00 to 2015-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.048
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.95      0.80      0.87        70
+       crash       0.81      0.95      0.87        61
+
+    accuracy                           0.87       131
+   macro avg       0.88      0.88      0.87       131
+weighted avg       0.88      0.87      0.87       131
+
+Prediction period: 2016-01-01 00:00:00 to 2016-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.048
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.83      0.62      0.71        88
+       crash       0.48      0.73      0.58        41
+
+    accuracy                           0.66       129
+   macro avg       0.65      0.68      0.65       129
+weighted avg       0.72      0.66      0.67       129
+
+Prediction period: 2016-07-01 00:00:00 to 2016-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.058
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.8s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.64      0.78        92
+       crash       0.54      1.00      0.70        38
+
+    accuracy                           0.75       130
+   macro avg       0.77      0.82      0.74       130
+weighted avg       0.86      0.75      0.76       130
+
+Prediction period: 2017-01-01 00:00:00 to 2017-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.047
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:   58.8s remaining:  3.4min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.0min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.65      0.74      0.70        74
+       crash       0.58      0.47      0.52        55
+
+    accuracy                           0.63       129
+   macro avg       0.62      0.61      0.61       129
+weighted avg       0.62      0.63      0.62       129
+
+Prediction period: 2017-07-01 00:00:00 to 2017-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.044
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.35      1.00      0.52        45
+       crash       0.00      0.00      0.00        84
+
+    accuracy                           0.35       129
+   macro avg       0.17      0.50      0.26       129
+weighted avg       0.12      0.35      0.18       129
+
+Prediction period: 2018-01-01 00:00:00 to 2018-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.043
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.7s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.60      0.92      0.73        60
+       crash       0.87      0.48      0.62        69
+
+    accuracy                           0.68       129
+   macro avg       0.74      0.70      0.67       129
+weighted avg       0.75      0.68      0.67       129
+
+Prediction period: 2018-07-01 00:00:00 to 2018-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.029
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.1s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.49      0.96      0.65        24
+       crash       0.99      0.77      0.87       106
+
+    accuracy                           0.81       130
+   macro avg       0.74      0.87      0.76       130
+weighted avg       0.90      0.81      0.83       130
+
+Prediction period: 2019-01-01 00:00:00 to 2019-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.40      0.78      0.53        37
+       crash       0.85      0.52      0.64        91
+
+    accuracy                           0.59       128
+   macro avg       0.63      0.65      0.59       128
+weighted avg       0.72      0.59      0.61       128
+
+Prediction period: 2019-07-01 00:00:00 to 2019-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.039
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.47      1.00      0.64        50
+       crash       1.00      0.30      0.46        81
+
+    accuracy                           0.56       131
+   macro avg       0.73      0.65      0.55       131
+weighted avg       0.80      0.56      0.53       131
+
+Prediction period: 2020-01-01 00:00:00 to 2020-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.027
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.9s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.66      0.48      0.55        48
+       crash       0.73      0.85      0.79        81
+
+    accuracy                           0.71       129
+   macro avg       0.70      0.67      0.67       129
+weighted avg       0.71      0.71      0.70       129
+
+Prediction period: 2020-07-01 00:00:00 to 2020-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.046
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.7s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.60      1.00      0.75        28
+       crash       1.00      0.82      0.90       103
+
+    accuracy                           0.85       131
+   macro avg       0.80      0.91      0.82       131
+weighted avg       0.91      0.85      0.87       131
+
+Prediction period: 2021-01-01 00:00:00 to 2021-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.029
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.7s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.01      0.02        91
+       crash       0.29      1.00      0.45        37
+
+    accuracy                           0.30       128
+   macro avg       0.65      0.51      0.24       128
+weighted avg       0.80      0.30      0.15       128
+
+Prediction period: 2021-07-01 00:00:00 to 2021-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.023
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.86      0.41      0.55        59
+       crash       0.66      0.94      0.78        72
+
+    accuracy                           0.70       131
+   macro avg       0.76      0.68      0.66       131
+weighted avg       0.75      0.70      0.68       131
+
+Prediction period: 2022-01-01 00:00:00 to 2022-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.020
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        49
+       crash       0.62      1.00      0.76        79
+
+    accuracy                           0.62       128
+   macro avg       0.31      0.50      0.38       128
+weighted avg       0.38      0.62      0.47       128
+
+Prediction period: 2022-07-01 00:00:00 to 2022-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.004
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.0min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.1min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.3min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   51.9s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.38      0.55        80
+       crash       0.50      1.00      0.67        50
+
+    accuracy                           0.62       130
+   macro avg       0.75      0.69      0.61       130
+weighted avg       0.81      0.62      0.59       130
+
+Prediction period: 2023-01-01 00:00:00 to 2023-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.004
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.77      0.53      0.63        70
+       crash       0.59      0.81      0.69        59
+
+    accuracy                           0.66       129
+   macro avg       0.68      0.67      0.66       129
+weighted avg       0.69      0.66      0.65       129
+
+Prediction period: 2023-07-01 00:00:00 to 2023-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.003
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.59      0.52      0.55        31
+       crash       0.85      0.89      0.87        97
+
+    accuracy                           0.80       128
+   macro avg       0.72      0.70      0.71       128
+weighted avg       0.79      0.80      0.79       128
+
+Prediction period: 2024-01-01 00:00:00 to 2024-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=-0.005
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.7min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.90      0.83      0.86        87
+       crash       0.69      0.81      0.75        42
+
+    accuracy                           0.82       129
+   macro avg       0.80      0.82      0.80       129
+weighted avg       0.83      0.82      0.82       129
+
+Prediction period: 2024-07-01 00:00:00 to 2024-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=-0.012
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.66      1.00      0.79        61
+       crash       1.00      0.54      0.70        70
+
+    accuracy                           0.76       131
+   macro avg       0.83      0.77      0.75       131
+weighted avg       0.84      0.76      0.74       131
+
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0        0.01548    0.045973  0.336728  ... -0.012151  0.119167          -0.060913
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.016847    0.073906  0.227956  ... -0.015808  0.056734           -0.02985
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0        0.01799    0.041383  0.434709  ... -0.009376  0.081211                NaN
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.069893    0.183782  0.380303  ... -0.047902  0.116027           0.269953
+
+[1 rows x 8 columns]
+[Full loop] 2024-07-01～2024-12-31 total 5493.1s
+Prediction period: 1994-01-01 00:00:00 to 1994-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.050
+/home/tk9623/JM_to_FI/UST10_cont1.4.5_rqpen_regLSTM.py:876: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.36      0.53        33
+       crash       0.82      1.00      0.90        95
+
+    accuracy                           0.84       128
+   macro avg       0.91      0.68      0.72       128
+weighted avg       0.87      0.84      0.81       128
+
+Prediction period: 1994-07-01 00:00:00 to 1994-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        69
+       crash       0.47      1.00      0.64        61
+
+    accuracy                           0.47       130
+   macro avg       0.23      0.50      0.32       130
+weighted avg       0.22      0.47      0.30       130
+
+Prediction period: 1995-01-01 00:00:00 to 1995-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.025
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.76      0.71      0.73       103
+       crash       0.09      0.12      0.10        26
+
+    accuracy                           0.59       129
+   macro avg       0.43      0.41      0.42       129
+weighted avg       0.63      0.59      0.61       129
+
+Prediction period: 1995-07-01 00:00:00 to 1995-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.019
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.92      0.97      0.94        96
+       crash       0.89      0.76      0.82        33
+
+    accuracy                           0.91       129
+   macro avg       0.91      0.86      0.88       129
+weighted avg       0.91      0.91      0.91       129
+
+Prediction period: 1996-01-01 00:00:00 to 1996-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.92      1.00      0.96        35
+       crash       1.00      0.97      0.98        94
+
+    accuracy                           0.98       129
+   macro avg       0.96      0.98      0.97       129
+weighted avg       0.98      0.98      0.98       129
+
+Prediction period: 1996-07-01 00:00:00 to 1996-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.022
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.38      1.00      0.55        27
+       crash       1.00      0.57      0.72       104
+
+    accuracy                           0.66       131
+   macro avg       0.69      0.78      0.63       131
+weighted avg       0.87      0.66      0.69       131
+
+Prediction period: 1997-01-01 00:00:00 to 1997-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.026
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.84      0.84      0.84        62
+       crash       0.85      0.85      0.85        66
+
+    accuracy                           0.84       128
+   macro avg       0.84      0.84      0.84       128
+weighted avg       0.84      0.84      0.84       128
+
+Prediction period: 1997-07-01 00:00:00 to 1997-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.026
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.73      1.00      0.85        88
+       crash       1.00      0.26      0.41        43
+
+    accuracy                           0.76       131
+   macro avg       0.87      0.63      0.63       131
+weighted avg       0.82      0.76      0.70       131
+
+Prediction period: 1998-01-01 00:00:00 to 1998-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.028
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   32.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   18.9s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.15      1.00      0.26        19
+       crash       0.00      0.00      0.00       109
+
+    accuracy                           0.15       128
+   macro avg       0.07      0.50      0.13       128
+weighted avg       0.02      0.15      0.04       128
+
+Prediction period: 1998-07-01 00:00:00 to 1998-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.32      1.00      0.49        33
+       crash       1.00      0.29      0.44        98
+
+    accuracy                           0.47       131
+   macro avg       0.66      0.64      0.46       131
+weighted avg       0.83      0.47      0.45       131
+
+Prediction period: 1999-01-01 00:00:00 to 1999-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.032
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.15      0.27        65
+       crash       0.53      1.00      0.70        63
+
+    accuracy                           0.57       128
+   macro avg       0.77      0.58      0.48       128
+weighted avg       0.77      0.57      0.48       128
+
+Prediction period: 1999-07-01 00:00:00 to 1999-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.75      0.06      0.11        51
+       crash       0.62      0.99      0.76        80
+
+    accuracy                           0.63       131
+   macro avg       0.69      0.52      0.44       131
+weighted avg       0.67      0.63      0.51       131
+
+Prediction period: 2000-01-01 00:00:00 to 2000-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.022
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.39      0.56        57
+       crash       0.67      1.00      0.80        72
+
+    accuracy                           0.73       129
+   macro avg       0.84      0.69      0.68       129
+weighted avg       0.82      0.73      0.70       129
+
+Prediction period: 2000-07-01 00:00:00 to 2000-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.26      1.00      0.42        23
+       crash       1.00      0.40      0.57       106
+
+    accuracy                           0.50       129
+   macro avg       0.63      0.70      0.49       129
+weighted avg       0.87      0.50      0.54       129
+
+Prediction period: 2001-01-01 00:00:00 to 2001-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.022
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.39      0.56        70
+       crash       0.58      1.00      0.73        59
+
+    accuracy                           0.67       129
+   macro avg       0.79      0.69      0.64       129
+weighted avg       0.81      0.67      0.64       129
+
+Prediction period: 2001-07-01 00:00:00 to 2001-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.019
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.5s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.29      0.45        92
+       crash       0.37      1.00      0.54        38
+
+    accuracy                           0.50       130
+   macro avg       0.68      0.65      0.50       130
+weighted avg       0.82      0.50      0.48       130
+
+Prediction period: 2002-01-01 00:00:00 to 2002-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.016
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.87      0.28      0.42        98
+       crash       0.27      0.87      0.41        30
+
+    accuracy                           0.41       128
+   macro avg       0.57      0.57      0.41       128
+weighted avg       0.73      0.41      0.42       128
+
+Prediction period: 2002-07-01 00:00:00 to 2002-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.012
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.74      0.43      0.55        81
+       crash       0.45      0.76      0.57        50
+
+    accuracy                           0.56       131
+   macro avg       0.60      0.60      0.56       131
+weighted avg       0.63      0.56      0.55       131
+
+Prediction period: 2003-01-01 00:00:00 to 2003-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.017
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.52      1.00      0.69        48
+       crash       1.00      0.45      0.62        80
+
+    accuracy                           0.66       128
+   macro avg       0.76      0.72      0.65       128
+weighted avg       0.82      0.66      0.65       128
+
+Prediction period: 2003-07-01 00:00:00 to 2003-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        92
+       crash       0.30      1.00      0.46        39
+
+    accuracy                           0.30       131
+   macro avg       0.15      0.50      0.23       131
+weighted avg       0.09      0.30      0.14       131
+
+Prediction period: 2004-01-01 00:00:00 to 2004-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.033
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.1s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.95      0.61      0.74        61
+       crash       0.73      0.97      0.84        68
+
+    accuracy                           0.80       129
+   macro avg       0.84      0.79      0.79       129
+weighted avg       0.84      0.80      0.79       129
+
+Prediction period: 2004-07-01 00:00:00 to 2004-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.023
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.77      0.63      0.69        65
+       crash       0.69      0.82      0.75        66
+
+    accuracy                           0.73       131
+   macro avg       0.73      0.72      0.72       131
+weighted avg       0.73      0.73      0.72       131
+
+Prediction period: 2005-01-01 00:00:00 to 2005-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.96      0.92      0.94        85
+       crash       0.85      0.93      0.89        43
+
+    accuracy                           0.92       128
+   macro avg       0.91      0.92      0.91       128
+weighted avg       0.93      0.92      0.92       128
+
+Prediction period: 2005-07-01 00:00:00 to 2005-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.033
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.70      0.75      0.73        53
+       crash       0.82      0.78      0.80        77
+
+    accuracy                           0.77       130
+   macro avg       0.76      0.77      0.76       130
+weighted avg       0.77      0.77      0.77       130
+
+Prediction period: 2006-01-01 00:00:00 to 2006-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.021
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.34      0.51        79
+       crash       0.49      1.00      0.66        50
+
+    accuracy                           0.60       129
+   macro avg       0.75      0.67      0.58       129
+weighted avg       0.80      0.60      0.57       129
+
+Prediction period: 2006-07-01 00:00:00 to 2006-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.017
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.58      0.94      0.72        53
+       crash       0.93      0.53      0.67        76
+
+    accuracy                           0.70       129
+   macro avg       0.76      0.73      0.70       129
+weighted avg       0.79      0.70      0.69       129
+
+Prediction period: 2007-01-01 00:00:00 to 2007-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.016
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.5s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.27      0.42        82
+       crash       0.44      1.00      0.61        47
+
+    accuracy                           0.53       129
+   macro avg       0.72      0.63      0.52       129
+weighted avg       0.80      0.53      0.49       129
+
+Prediction period: 2007-07-01 00:00:00 to 2007-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.008
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.3s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.77      0.88      0.82        78
+       crash       0.78      0.60      0.67        52
+
+    accuracy                           0.77       130
+   macro avg       0.77      0.74      0.75       130
+weighted avg       0.77      0.77      0.76       130
+
+Prediction period: 2008-01-01 00:00:00 to 2008-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.011
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.70      0.54      0.61        48
+       crash       0.76      0.86      0.81        81
+
+    accuracy                           0.74       129
+   macro avg       0.73      0.70      0.71       129
+weighted avg       0.74      0.74      0.74       129
+
+Prediction period: 2008-07-01 00:00:00 to 2008-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.018
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.29      0.71      0.41        31
+       crash       0.84      0.46      0.59       100
+
+    accuracy                           0.52       131
+   macro avg       0.56      0.58      0.50       131
+weighted avg       0.71      0.52      0.55       131
+
+Prediction period: 2009-01-01 00:00:00 to 2009-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.042
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.13      0.14      0.14        29
+       crash       0.74      0.74      0.74        99
+
+    accuracy                           0.60       128
+   macro avg       0.44      0.44      0.44       128
+weighted avg       0.61      0.60      0.60       128
+
+Prediction period: 2009-07-01 00:00:00 to 2009-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.036
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.94      0.36      0.52        84
+       crash       0.45      0.96      0.62        47
+
+    accuracy                           0.57       131
+   macro avg       0.70      0.66      0.57       131
+weighted avg       0.76      0.57      0.55       131
+
+Prediction period: 2010-01-01 00:00:00 to 2010-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.61      0.82      0.70        44
+       crash       0.88      0.73      0.80        84
+
+    accuracy                           0.76       128
+   macro avg       0.75      0.77      0.75       128
+weighted avg       0.79      0.76      0.76       128
+
+Prediction period: 2010-07-01 00:00:00 to 2010-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.95      0.58      0.72        95
+       crash       0.45      0.92      0.61        36
+
+    accuracy                           0.67       131
+   macro avg       0.70      0.75      0.66       131
+weighted avg       0.81      0.67      0.69       131
+
+Prediction period: 2011-01-01 00:00:00 to 2011-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.028
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.5s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.53      0.69        55
+       crash       0.74      1.00      0.85        73
+
+    accuracy                           0.80       128
+   macro avg       0.87      0.76      0.77       128
+weighted avg       0.85      0.80      0.78       128
+
+Prediction period: 2011-07-01 00:00:00 to 2011-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.035
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.59      0.82      0.68        49
+       crash       0.85      0.65      0.74        81
+
+    accuracy                           0.72       130
+   macro avg       0.72      0.74      0.71       130
+weighted avg       0.75      0.72      0.72       130
+
+Prediction period: 2012-01-01 00:00:00 to 2012-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.042
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.53      1.00      0.70        46
+       crash       1.00      0.52      0.68        83
+
+    accuracy                           0.69       129
+   macro avg       0.77      0.76      0.69       129
+weighted avg       0.83      0.69      0.69       129
+
+Prediction period: 2012-07-01 00:00:00 to 2012-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.043
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.9s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.46      0.91      0.61        43
+       crash       0.91      0.47      0.62        87
+
+    accuracy                           0.62       130
+   macro avg       0.68      0.69      0.62       130
+weighted avg       0.76      0.62      0.62       130
+
+Prediction period: 2013-01-01 00:00:00 to 2013-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.045
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   34.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.73      0.73      0.73        49
+       crash       0.84      0.84      0.84        79
+
+    accuracy                           0.80       128
+   macro avg       0.79      0.79      0.79       128
+weighted avg       0.80      0.80      0.80       128
+
+Prediction period: 2013-07-01 00:00:00 to 2013-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.038
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   34.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        75
+       crash       0.43      1.00      0.60        56
+
+    accuracy                           0.43       131
+   macro avg       0.21      0.50      0.30       131
+weighted avg       0.18      0.43      0.26       131
+
+Prediction period: 2014-01-01 00:00:00 to 2014-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.029
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.75      0.43      0.55        84
+       crash       0.40      0.73      0.52        44
+
+    accuracy                           0.53       128
+   macro avg       0.57      0.58      0.53       128
+weighted avg       0.63      0.53      0.54       128
+
+Prediction period: 2014-07-01 00:00:00 to 2014-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.038
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   34.0s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.53      0.97      0.68        68
+       crash       0.67      0.06      0.12        63
+
+    accuracy                           0.53       131
+   macro avg       0.60      0.52      0.40       131
+weighted avg       0.59      0.53      0.41       131
+
+Prediction period: 2015-01-01 00:00:00 to 2015-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.046
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.5s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.40      1.00      0.57        25
+       crash       1.00      0.64      0.78       103
+
+    accuracy                           0.71       128
+   macro avg       0.70      0.82      0.68       128
+weighted avg       0.88      0.71      0.74       128
+
+Prediction period: 2015-07-01 00:00:00 to 2015-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.048
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.2s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.82      0.97      0.89        70
+       crash       0.96      0.75      0.84        61
+
+    accuracy                           0.87       131
+   macro avg       0.89      0.86      0.87       131
+weighted avg       0.88      0.87      0.87       131
+
+Prediction period: 2016-01-01 00:00:00 to 2016-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.048
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.75      0.77      0.76        88
+       crash       0.47      0.44      0.46        41
+
+    accuracy                           0.67       129
+   macro avg       0.61      0.61      0.61       129
+weighted avg       0.66      0.67      0.66       129
+
+Prediction period: 2016-07-01 00:00:00 to 2016-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.058
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.6s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.61      0.76        92
+       crash       0.51      1.00      0.68        38
+
+    accuracy                           0.72       130
+   macro avg       0.76      0.80      0.72       130
+weighted avg       0.86      0.72      0.73       130
+
+Prediction period: 2017-01-01 00:00:00 to 2017-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.047
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.80      0.82      0.81        74
+       crash       0.75      0.73      0.74        55
+
+    accuracy                           0.78       129
+   macro avg       0.78      0.78      0.78       129
+weighted avg       0.78      0.78      0.78       129
+
+Prediction period: 2017-07-01 00:00:00 to 2017-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.044
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.40      1.00      0.57        45
+       crash       1.00      0.20      0.34        84
+
+    accuracy                           0.48       129
+   macro avg       0.70      0.60      0.45       129
+weighted avg       0.79      0.48      0.42       129
+
+Prediction period: 2018-01-01 00:00:00 to 2018-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.043
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.5s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.2s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.58      0.93      0.71        60
+       crash       0.88      0.41      0.55        69
+
+    accuracy                           0.65       129
+   macro avg       0.73      0.67      0.63       129
+weighted avg       0.74      0.65      0.63       129
+
+Prediction period: 2018-07-01 00:00:00 to 2018-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.029
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.8s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.44      1.00      0.61        24
+       crash       1.00      0.71      0.83       106
+
+    accuracy                           0.76       130
+   macro avg       0.72      0.85      0.72       130
+weighted avg       0.90      0.76      0.79       130
+
+Prediction period: 2019-01-01 00:00:00 to 2019-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.031
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.29      1.00      0.45        37
+       crash       0.00      0.00      0.00        91
+
+    accuracy                           0.29       128
+   macro avg       0.14      0.50      0.22       128
+weighted avg       0.08      0.29      0.13       128
+
+Prediction period: 2019-07-01 00:00:00 to 2019-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.039
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.1s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.55      1.00      0.71        50
+       crash       1.00      0.49      0.66        81
+
+    accuracy                           0.69       131
+   macro avg       0.77      0.75      0.69       131
+weighted avg       0.83      0.69      0.68       131
+
+Prediction period: 2020-01-01 00:00:00 to 2020-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.027
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.3s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.6s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.46      0.54      0.50        48
+       crash       0.70      0.63      0.66        81
+
+    accuracy                           0.60       129
+   macro avg       0.58      0.59      0.58       129
+weighted avg       0.61      0.60      0.60       129
+
+Prediction period: 2020-07-01 00:00:00 to 2020-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.046
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.7s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.37      1.00      0.54        28
+       crash       1.00      0.54      0.70       103
+
+    accuracy                           0.64       131
+   macro avg       0.69      0.77      0.62       131
+weighted avg       0.87      0.64      0.67       131
+
+Prediction period: 2021-01-01 00:00:00 to 2021-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.029
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   52.9s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.2s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.0s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       1.00      0.21      0.35        91
+       crash       0.34      1.00      0.51        37
+
+    accuracy                           0.44       128
+   macro avg       0.67      0.60      0.43       128
+weighted avg       0.81      0.44      0.39       128
+
+Prediction period: 2021-07-01 00:00:00 to 2021-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.023
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.87      0.88      0.87        59
+       crash       0.90      0.89      0.90        72
+
+    accuracy                           0.89       131
+   macro avg       0.88      0.89      0.88       131
+weighted avg       0.89      0.89      0.89       131
+
+Prediction period: 2022-01-01 00:00:00 to 2022-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.020
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.7s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.00      0.00      0.00        49
+       crash       0.62      1.00      0.76        79
+
+    accuracy                           0.62       128
+   macro avg       0.31      0.50      0.38       128
+weighted avg       0.38      0.62      0.47       128
+
+Prediction period: 2022-07-01 00:00:00 to 2022-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.004
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.4s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.6s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.88      0.26      0.40        80
+       crash       0.44      0.94      0.60        50
+
+    accuracy                           0.52       130
+   macro avg       0.66      0.60      0.50       130
+weighted avg       0.71      0.52      0.48       130
+
+Prediction period: 2023-01-01 00:00:00 to 2023-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.004
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.5s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.90      0.13      0.23        70
+       crash       0.49      0.98      0.65        59
+
+    accuracy                           0.52       129
+   macro avg       0.69      0.56      0.44       129
+weighted avg       0.71      0.52      0.42       129
+
+Prediction period: 2023-07-01 00:00:00 to 2023-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=0.003
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.9min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   54.0s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.8s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.3s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.1min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.85      0.35      0.50        31
+       crash       0.83      0.98      0.90        97
+
+    accuracy                           0.83       128
+   macro avg       0.84      0.67      0.70       128
+weighted avg       0.83      0.83      0.80       128
+
+Prediction period: 2024-01-01 00:00:00 to 2024-06-30 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=-0.005
+[Parallel(n_jobs=-1)]: Using backend LokyBackend with 16 concurrent workers.
+[Parallel(n_jobs=-1)]: Done   2 out of   9 | elapsed:  1.1min remaining:  3.8min
+[Parallel(n_jobs=-1)]: Done   3 out of   9 | elapsed:  1.1min remaining:  2.2min
+[Parallel(n_jobs=-1)]: Done   4 out of   9 | elapsed:  1.1min remaining:  1.4min
+[Parallel(n_jobs=-1)]: Done   5 out of   9 | elapsed:  1.1min remaining:   53.1s
+[Parallel(n_jobs=-1)]: Done   6 out of   9 | elapsed:  1.1min remaining:   33.4s
+[Parallel(n_jobs=-1)]: Done   7 out of   9 | elapsed:  1.1min remaining:   19.4s
+[Parallel(n_jobs=-1)]: Done   9 out of   9 | elapsed:  1.2min finished
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.84      0.70      0.76        87
+       crash       0.54      0.71      0.61        42
+
+    accuracy                           0.71       129
+   macro avg       0.69      0.71      0.69       129
+weighted avg       0.74      0.71      0.71       129
+
+Prediction period: 2024-07-01 00:00:00 to 2024-12-31 00:00:00
+Best: jump penalty =31622.776601683792, lam_kl =0.01, score=-0.012
+Classification Report:
+               precision    recall  f1-score   support
+
+      growth       0.71      1.00      0.83        61
+       crash       1.00      0.64      0.78        70
+
+    accuracy                           0.81       131
+   macro avg       0.85      0.82      0.81       131
+weighted avg       0.86      0.81      0.80       131
+
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.008759    0.046721  0.187481  ... -0.012809  0.055591          -0.221806
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.016847    0.073906  0.227956  ... -0.015808  0.056734           -0.02985
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0        0.01799    0.041383  0.434709  ... -0.009376  0.081211                NaN
+
+[1 rows x 8 columns]
+   annual_return  annual_vol    sharpe  ...   cvar_99    calmar  information_ratio
+0       0.069893    0.183782  0.380303  ... -0.047902  0.116027           0.269953
+
+[1 rows x 8 columns]
+[Full loop] 2024-07-01～2024-12-31 total 5609.2s
+0.02320062515658678

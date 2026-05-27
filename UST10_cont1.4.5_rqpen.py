@@ -36,9 +36,9 @@ warnings.filterwarnings("ignore", category=UserWarning)
 datadict = 'data/'
 asset = 'UST10'
 assetfile = 'TRXVUSGOV10U(TOT_RETURN)_import'
-datastart = '1982-01-11'
-valstart = '1994-01-01'
-teststart = '2004-01-01'
+datastart = '1999-01-01'
+valstart = '2010-01-01'
+teststart = '2015-01-01'
 dataend = '2025-03-31'
 
 pcafile = "pca_scores_dynamic_ewrb5.csv"
@@ -481,7 +481,6 @@ from sklearn.metrics.pairwise        import linear_kernel
 from sklearn.gaussian_process.kernels import RationalQuadratic
 from sklearn.dummy import DummyClassifier
 
-tscv = TimeSeriesSplit(n_splits = 6)
 
 lambda_list = np.logspace(4.5,5,3)
 reg_alpha_list = [0.1] + np.logspace(-1, 0.6, 4)
@@ -508,7 +507,7 @@ grid = list(ParameterGrid(param_grid))
 
 # クロスバリデーションを回して平均スコアを返す関数
 def evaluate_params(lam, alpha, Xj_train, ret_all, rf_all, ext_features_df, jm_setting, tr_cost):
-    tscv = TimeSeriesSplit(n_splits=5)
+    tscv = TimeSeriesSplit(n_splits=1)
     cv_scores = []
     for train_idx, val_idx in tscv.split(Xj_train):
         # --- 各フォールドの処理をここに ---
@@ -752,6 +751,14 @@ for pname, (umodel, ext_features_df) in patterns.items():
         benchmark  = bench.reindex(pred_idx).fillna(0.0)
     )
     print(perf_bench)
+    
+    perf_bench2 = compute_performance(
+        ret_series = bench2.reindex(pred_idx).fillna(0.0),
+        rf_series  = rf_aligned,
+        freq       = 252,
+        benchmark  = bench.reindex(pred_idx).fillna(0.0)
+    )
+    print(perf_bench2)
 
     cum_bh1    = ret_val.cumsum()
     cum_jm_xgb= ret_strat.cumsum()
@@ -768,10 +775,11 @@ for pname, (umodel, ext_features_df) in patterns.items():
     results_xgb_roll[pname] = {
         'best_params':         best_lambda,
         'best_cv_score':       best_score,
-        'classification_report': clf_dict,
+        'classification_report': clf_xgb_roll,
         'perf_bh':             perf_bh,
         'perf_jm_xgb':         perf_jm_xgb,
         'perf_bench':         perf_bench,
+        'perf_bench2':         perf_bench2,
         'cum_bh1':              cum_bh1,
         'cum_strat':           cum_jm_xgb,
         'regime':             regime_all,
@@ -802,7 +810,7 @@ perf_df = perf_df.map(lambda cell: cell.item() if isinstance(cell, pd.Series) an
 
 import pickle
 resdir = 'results'
-nbname = 'UST10_cont1.4.5_GPU_rqpen_tscv=6'
+nbname = 'UST10_cont1.4.5_GPU_rqpen_short2'
 
 results_to_save = {}
 for pname, res in results_xgb_roll.items():

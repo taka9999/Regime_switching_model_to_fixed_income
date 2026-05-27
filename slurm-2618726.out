@@ -1,0 +1,72 @@
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:169: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_pc = X_with_pc.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:199: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  X_with_ns = X_with_ns.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:411: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  bi_aligned = bi_aligned.fillna(method="bfill")
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:474: FutureWarning: DataFrame.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  sw_aligned = sw_aligned.fillna(method="bfill")
+Daily returns stored in `data.ret_ser`:
+--------------------------------------------------
+date
+1989-01-03   -0.006312
+1989-01-04   -0.003485
+1989-01-05    0.000050
+1989-01-06    0.004368
+1989-01-09   -0.002272
+                ...   
+2025-03-24   -0.002438
+2025-03-26    0.002328
+2025-03-27   -0.000172
+2025-03-28    0.003871
+2025-03-31    0.001645
+Name: diffret of UST10 and BmCorp, Length: 9081, dtype: float64
+--------------------------------------------------
+Features stored in `data.X`:
+--------------------------------------------------
+               ret_5  DD-log_5  sortino_5  ...    ret_60  DD-log_60  sortino_60
+date                                       ...                                 
+1989-01-03 -0.003455 -4.475877  -0.303581  ... -0.008319  -3.736758   -0.349094
+1989-01-04 -0.003459 -4.538268  -0.323488  ... -0.008242  -3.744597   -0.348591
+1989-01-05 -0.003005 -4.607583  -0.301178  ... -0.008111  -3.752573   -0.345788
+1989-01-06 -0.002050 -4.676897  -0.220257  ... -0.007915  -3.760514   -0.340095
+1989-01-09 -0.002079 -4.741804  -0.238313  ... -0.007826  -3.768345   -0.338935
+...              ...       ...        ...  ...       ...        ...         ...
+2025-03-24  0.000047 -6.649531   0.036073  ...  0.000040  -6.849991    0.037380
+2025-03-26  0.000342 -6.718845   0.283104  ...  0.000066  -6.855767    0.062546
+2025-03-27  0.000275 -6.786657   0.244038  ...  0.000063  -6.861389    0.060292
+2025-03-28  0.000741 -6.855972   0.703462  ...  0.000107  -6.867165    0.102634
+2025-03-31  0.000858 -6.925287   0.873064  ...  0.000125  -6.872941    0.120291
+
+[9081 rows x 9 columns]
+[base] train: 1989-01-03 00:00:00〜1999-12-31 00:00:00 | validation 2000-01-03 00:00:00 ~ 2004-12-31 00:00:00 |test: 2005-01-03 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[NS] train: 1989-01-03 00:00:00〜1999-12-31 00:00:00 | validation 2000-01-03 00:00:00 ~ 2004-12-31 00:00:00 |test: 2005-01-03 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+[PCA] train: 1989-01-03 00:00:00〜1999-12-31 00:00:00 | validation 2000-01-03 00:00:00 ~ 2004-12-31 00:00:00 |test: 2005-01-03 00:00:00〜2025-03-31 00:00:00
+  raw train—inf? False, nan? False
+  clean train—inf? False, nan? False
+  raw val   —inf? False, nan? False
+  clean val —inf? False, nan? False
+  raw test —inf? False, nan? False
+  clean test —inf? False, nan? False
+
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:627: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:627: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+/home/tk9623/JM_to_FI/UST_BmCorp_mix_cont1.4.5_kerpen.py:627: FutureWarning: The behavior of array concatenation with empty entries is deprecated. In a future version, this will no longer exclude empty items when determining the result dtype. To retain the old behavior, exclude the empty entries before the concat operation.
+  regime_all = pd.concat([regime_all, regime])
+slurmstepd: error: *** JOB 2618726 ON adroit-h11g2 CANCELLED AT 2025-08-19T14:19:36 ***

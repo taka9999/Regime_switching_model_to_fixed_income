@@ -480,7 +480,7 @@ from sklearn.metrics.pairwise import rbf_kernel
 from sklearn.metrics.pairwise        import linear_kernel
 from sklearn.gaussian_process.kernels import RationalQuadratic
 
-tscv = TimeSeriesSplit(n_splits = 6)
+tscv = TimeSeriesSplit(n_splits = 5)
 
 lambda_list = np.logspace(4.5,5,5)
 reg_alpha_list = [0.1] + np.logspace(-1, 0.6, 4)
@@ -663,8 +663,9 @@ for pname, (umodel, ext_features_df) in patterns.items():
         X_val_mat_full = scaler_full.transform(X_feat_val_full.values)
         K_val_lin_full = linear_kernel(X_val_mat_full, X_tr_mat_full)
         K_val_rq_full  = rq(X_val_mat_full, X_tr_mat_full)
-        K_val_full = K_val_lin_full + K_val_rq_full
+        #K_val_full = K_val_lin_full + K_val_rq_full
         #K_val_full = rbf_kernel(X_val_mat_full, X_tr_mat_full, gamma=gamma) # (n_val, n_tr)
+        K_val_full = K_val_rq_full
         X_val_lat_full = pls_full.transform(K_val_full)
     
         # 確率を取り出す

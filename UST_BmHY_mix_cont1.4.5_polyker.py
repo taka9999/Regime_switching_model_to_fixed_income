@@ -710,7 +710,7 @@ for pname, (umodel, ext_features_df) in patterns.items():
     results_xgb_roll[pname] = {
         'best_params':         best_lambda,
         'best_cv_score':       best_score,
-        'classification_report': clf_report,
+        'classification_report': clf_xgb_roll,
         'perf_bh':             perf_bh,
         'perf_bh2':            perf_bh2,
         'perf_jm_xgb':         perf_jm_xgb,
